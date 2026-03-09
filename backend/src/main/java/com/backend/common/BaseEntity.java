@@ -1,0 +1,44 @@
+package com.backend.common;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+import lombok.extern.java.Log;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.time.LocalDate;
+
+@Data
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+
+public class BaseEntity {
+    @Id
+    @GeneratedValue
+    private Long id;
+    @CreatedDate
+    @Column(
+            nullable = false,
+            updatable = false
+    )
+    private LocalDate createdDate;
+    @Column(
+            insertable = false
+    )
+    private LocalDate lastModifiedDate;
+    @CreatedBy
+    @Column(nullable = false,updatable = false)
+    private String createdBy;
+    @LastModifiedBy
+    @Column(insertable = false)
+    private String lastModifiedBy;
+
+}

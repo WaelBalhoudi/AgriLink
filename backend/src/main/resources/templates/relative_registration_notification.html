@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Relative Registration Notification</title>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .email-container {
+            max-width: 600px;
+            background: #ffffff;
+            padding: 20px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            text-align: center;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+  <h2>Hello <span th:text="${patient_name}"></span>,</h2>
+  <p>We are pleased to inform you that your chosen relative, <strong th:text="${relative_name}"></strong>,  has successfully accepted the invitation and is now linked to your account.</p>
+
+  <p>You can now communicate with them through our platform and keep track of their medical updates.</p>
+
+  <p>If you have any questions, feel free to reach out to our support team.</p>
+
+  <p class="footer">Best regards,<br><strong>Your Healthcare Team</strong></p>
+</div>
+</body>
+</html>

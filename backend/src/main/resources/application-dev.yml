@@ -1,0 +1,41 @@
+spring:
+
+#  datasource:
+#    url: jdbc:postgresql://db.nlgbkgzdfqzvqzvwdcuu.supabase.co:5432/postgres?user=postgres&password=TowardsGermany@123mmm788899
+#    username: postgres
+#    password: TowardsGermany@123mmm788899
+#    driver-class-name: org.postgresql.Driver
+  datasource:
+    url: jdbc:postgresql://localhost:5432/TunisiaLuxe
+    username: postgres
+    password: wael
+#    url: ${DATABASE_URL}
+#    username: ${PGUSER}
+#    password: ${PGPASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    database : postgresql
+    show-sql: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: waelbalhoudi@gmail.com
+    password: ietv jvuf dagn vkpf
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 50000
+          timeout: 30000
+          writetimeout: 50000
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
