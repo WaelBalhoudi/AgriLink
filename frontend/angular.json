@@ -27,9 +27,17 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/ngx-spinner/animations/square-jelly-box.css",
+              "public/assets/css/main.css",
+              "public/assets/css/core.css",
+              "public/assets/css/theme-default.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -85,9 +93,17 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/ngx-spinner/animations/square-jelly-box.css",
+              "public/assets/css/main.css",
+              "public/assets/css/core.css",
+              "public/assets/css/theme-default.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           }
         }
       }
