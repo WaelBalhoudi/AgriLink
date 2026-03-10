@@ -25,6 +25,7 @@
                     </a>
                    <!-- In your sidebar section -->
                     <a
+                        *ngIf="sidebarOpen"
                         #menuToggle
                         (click)="toggleMenu()"
                         id="mobile-menu-btn"
@@ -118,7 +119,7 @@
                 <nav class="layout-navbar navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme">
 
                     <!-- MOBILE MENU BUTTON -->
-                    <div class="layout-menu-toggle navbar-nav d-xl-none">
+                    <div class="layout-menu-toggle navbar-nav d-xl-none me-2">
                         <a class="nav-item nav-link px-0 me-xl-4" (click)="toggleMenu()" style="cursor: pointer;">
                             <i class="fas fa-bars"></i>
                         </a>
@@ -147,7 +148,7 @@
                         <li class="nav-item dropdown-user dropdown">
                             <a class="nav-link dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                 <div class="avatar avatar-online">
-                                    <img src="assets/avatar.png" class="rounded-circle" width="40">
+                                    <img src="assets/avatars/.1.png" class="rounded-circle" width="40">
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
