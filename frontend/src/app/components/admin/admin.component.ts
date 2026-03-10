@@ -25,4 +25,11 @@ export class AdminComponent {
     }
 
   }
+
+  
+toggleSearch() {
+    // Toggle mobile search visibility
+    const searchDiv = document.querySelector('.mobile-search');
+    searchDiv?.classList.toggle('d-none');
+}
 }
