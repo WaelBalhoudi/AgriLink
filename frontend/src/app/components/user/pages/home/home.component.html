@@ -15,25 +15,21 @@
 
           <div class="hero-buttons">
 
-            <div class="hero-buttons">
+            <button class="btn-form primary-btn-form" (click)="openCamera()">
+              Detect Plant Disease
+            </button>
 
-                <button class="btn-form primary-btn-form" (click)="openCamera()">
-                  🌿 Detect Plant Disease
-                </button>
-
-                <input 
-                  type="file"
-                  #fileInput
-                  accept="image/*"
-                  capture="environment"
-                  (change)="onFileSelected($event)"
-                  hidden
-                />
-
-              </div>
+            <input 
+              type="file"
+              #fileInput
+              accept="image/*"
+              capture="environment"
+              (change)="onFileSelected($event)"
+              hidden
+            />
 
             <a routerLink="/marketplace" class="btn-form">
-              🛒 Explore Marketplace
+              Explore Marketplace
             </a>
 
           </div>
@@ -65,18 +61,25 @@
       <img loading="lazy" src="assets/img/hero-carousel/5.png" alt="Agriculture market">
     </div>
 
-    <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+    <!-- Previous Button - Hidden on mobile, Font Awesome icon -->
+    <a class="carousel-control-prev d-none d-md-flex" href="#hero-carousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true">
+        <i class="fa-solid fa-chevron-left" style="font-size: 2rem;"></i>
+      </span>
+      <span class="visually-hidden">Previous</span>
     </a>
 
-    <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
-      <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+    <!-- Next Button - Hidden on mobile, Font Awesome icon -->
+    <a class="carousel-control-next d-none d-md-flex" href="#hero-carousel" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true">
+        <i class="fa-solid fa-chevron-right" style="font-size: 2rem;"></i>
+      </span>
+      <span class="visually-hidden">Next</span>
     </a>
 
   </div>
 
 </section>
-
 
 <section style="height: 500px; width: 100%; border: 1px solid red;">
 </section>
