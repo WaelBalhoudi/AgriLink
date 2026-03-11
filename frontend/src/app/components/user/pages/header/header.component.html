@@ -196,7 +196,7 @@
   <div class="modal-dialog">
     <div class="modal-content" style="max-width:500px; margin-inline: auto;">
       
-      <div class="modal-header">
+      <div class="modal-header" style="height: 0 !important;">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -265,129 +265,247 @@
   </div>
 </div>
 
-
-<!-- 2. SIGN UP MODAL -->
-<div class="modal fade" id="signUPModal" data-bs-backdrop="static" tabindex="-1">
-  <div class="modal-dialog" style="max-width:700px; width: 100%; margin-inline: auto;">
-    <form class="modal-content" action="#" method="POST">
+<!-- Sign Up Modal -->
+<div class="modal fade" id="signUPModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width: 700px;">
+    <div class="modal-content">
       
-      <div class="modal-header">
+      <!-- Header -->
+      <div class="modal-header border-0">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <div class="modal-body" style="padding-top: 0 !important;">
-        <h4 class="mb-2">Join AgriLink 🌱</h4>
-        <p class="mb-4 grey">Create your agriculture account</p>
+      <form (ngSubmit)="onSubmit()">
+        <div class="modal-body pt-0">
+          <h4 class="mb-2">Join AgriLink 🌱</h4>
+          <p class="mb-4 text-muted">Create your agriculture account</p>
 
-        <!-- Full Name -->
-        <div class="mb-3">
-          <label for="fullName" class="form-label">Full Name</label>
-          <input type="text" class="form-control" id="fullName" name="fullName" required placeholder="Enter your name" autofocus />
-        </div>
-
-        <!-- Email & Password Row -->
-        <div class="row g-2">
-          <div class="col mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email" />
+          <!-- Full Name -->
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="fullName" 
+              [(ngModel)]="formData.fullName"
+              name="fullName"
+              placeholder="Enter your name"
+            />
           </div>
-          <div class="col mb-3 form-password-toggle">
-            <label class="form-label" for="password">Password</label>
-            <div class="input-group input-group-merge">
-              <input type="password"
-                     id="password"
-                     class="form-control"
-                     name="password"
-                     required
-                     placeholder="Enter a strong password" />
-              <span class="input-group-text cursor-pointer">
-                <i class="fa-solid fa-eye"></i>
+
+          <!-- Email & Password Row -->
+          <div class="row g-2">
+            <div class="col-12 col-md-6 mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                [(ngModel)]="formData.email"
+                name="email"
+                placeholder="Enter your email"
+              />
+            </div>
+
+            <div class="col-12 col-md-6 mb-3">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-group">
+                <input 
+                  [type]="getPasswordType()" 
+                  class="form-control" 
+                  id="password" 
+                  [(ngModel)]="formData.password"
+                  name="password"
+                  placeholder="Password"
+                />
+                <span class="input-group-text cursor-pointer" (click)="togglePassword()">
+                  <i class="fa-solid" [class]="getPasswordIcon()"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phone & Experience Row -->
+          <div class="row g-2">
+            <div class="col-12 col-md-6 mb-3">
+              <label for="phoneNumber" class="form-label">Phone</label>
+              <input 
+                type="tel" 
+                class="form-control" 
+                id="phoneNumber" 
+                [(ngModel)]="formData.phoneNumber"
+                name="phoneNumber"
+                placeholder="Enter phone number"
+              />
+            </div>
+
+            <div class="col-12 col-md-6 mb-3">
+              <label for="experience" class="form-label">Years of Experience</label>
+              <input 
+                type="number" 
+                class="form-control" 
+                id="experience" 
+                [(ngModel)]="formData.experience"
+                name="experience"
+                min="0" 
+                max="50" 
+                placeholder="e.g. 5"
+              />
+            </div>
+          </div>
+
+          <!-- Smart Farm Type Input -->
+          <div class="mb-3">
+            <label class="form-label">Farm Type (Select multiple or type custom)</label>
+            
+            <!-- Tag Input Container -->
+            <div 
+              class="tag-input-container form-control p-2 d-flex flex-wrap gap-2" 
+              style="min-height: 50px; cursor: text;"
+              (click)="focusTagInput()"
+            >
+              <!-- Predefined Options -->
+              @for (type of predefinedFarmTypes; track type) {
+                <span 
+                  class="badge bg-light text-dark border" 
+                  style="cursor:pointer;"
+                  (click)="addTag(type)"
+                >
+                  {{ type }} +
+                </span>
+              }
+
+              <!-- Typing Area -->
+              <input 
+                type="text" 
+                id="farmTypeText"
+                class="border-0 outline-none flex-grow-1" 
+                placeholder="Type & press Enter..." 
+                style="min-width: 150px;"
+                [(ngModel)]="tagInputValue"
+                (keydown)="handleTagInput($event)"
+              />
+            </div>
+
+            <!-- Selected Tags Display -->
+            @if (farmTags.length > 0) {
+              <div class="d-flex flex-wrap gap-2 mt-2">
+                @for (tag of farmTags; track tag.id) {
+                  <span class="badge bg-primary d-flex align-items-center gap-2" style="font-size: 0.9rem;">
+                    {{ tag.value }}
+                    <i 
+                      class="fa-solid fa-times" 
+                      style="cursor:pointer; font-size: 0.8em;"
+                      (click)="removeTag(tag.id)"
+                    ></i>
+                  </span>
+                }
+              </div>
+            }
+          </div>
+
+         <!-- Location Input with Map Trigger -->
+          <div class="mb-3">
+            <label class="form-label">Farm Location</label>
+            <div class="input-group">
+              <input 
+                type="text" 
+                class="form-control" 
+                id="location" 
+                [(ngModel)]="formData.location"
+                name="location"
+                placeholder="Click to select on map"
+                readonly
+                style="cursor: pointer; background-color: #f8f9fa;"
+                data-bs-toggle="modal"
+                data-bs-target="#locationMapModal"
+              />
+              <span class="input-group-text" style="cursor: pointer;" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#locationMapModal">
+                <i class="fa-solid fa-map-location-dot"></i>
               </span>
             </div>
-            <!-- Password Requirements (From First Code) -->
-            <div class="password-requirements mt-2 p-3 rounded shadow d-none">
-              <div class="password-item">
-                <i class="fa-solid fa-circle-xmark text-danger"></i>
-                <span>At least 8 characters</span>
+            @if (formData.location) {
+              <div class="mt-2">
+                <small class="text-muted d-block">
+                  <i class="fa-solid fa-location-dot"></i> 
+                  <strong>Address:</strong> {{ selectedAddress }}
+                </small>
+                <small class="text-muted d-block">
+                  <i class="fa-solid fa-coordinates"></i> 
+                  <strong>Coordinates:</strong> {{ selectedCoordinates }}
+                </small>
               </div>
-              <div class="password-item">
-                <i class="fa-solid fa-circle-xmark text-danger"></i>
-                <span>Includes an uppercase letter</span>
-              </div>
-              <div class="password-item">
-                <i class="fa-solid fa-circle-xmark text-danger"></i>
-                <span>Includes a lowercase letter</span>
-              </div>
-              <div class="password-item">
-                <i class="fa-solid fa-circle-xmark text-danger"></i>
-                <span>Includes a number</span>
-              </div>
-            </div>
+            }
           </div>
-        </div>
 
-        <!-- Phone & DOB Row -->
-        <div class="row g-2">
-          <div class="col mb-3">
-            <label for="phoneNumber" class="form-label">Phone</label>
-            <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" required placeholder="Enter phone number" />
+          <!-- Submit Button -->
+          <div class="mb-3 mt-4">
+            <button class="btn btn-primary d-grid w-100 py-2" type="submit">
+              Create Account
+            </button>
           </div>
-          <div class="col mb-3">
-            <label for="dateOfBirth" class="form-label">Date of Birth</label>
-            <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required />
-          </div>
-        </div>
 
-        <!-- Account Type (Radio Buttons) -->
-        <div class="mb-3">
-          <label class="form-label">Account Type</label>
-          <div class="d-flex">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="role" id="roleFarmer" value="FARMER" required />
-              <label class="form-check-label grey" for="roleFarmer">Farmer</label>
-            </div>
-            <div class="form-check" style="margin-left: 20px;">
-              <input class="form-check-input" type="radio" name="role" id="roleBuyer" value="BUYER" required />
-              <label class="form-check-label grey" for="roleBuyer">Buyer</label>
-            </div>
-            <div class="form-check" style="margin-left: 20px;">
-              <input class="form-check-input" type="radio" name="role" id="roleAgronomist" value="AGRONOMIST" required />
-              <label class="form-check-label grey" for="roleAgronomist">Agronomist</label>
-            </div>
-          </div>
+          <!-- Footer Link - Opens Login Modal -->
+          <p class="text-center mt-3 mb-0">
+            <span class="text-muted">Already have an account? </span>
+            <a 
+              href="#" 
+              class="text-decoration-none fw-bold"
+              data-bs-dismiss="modal"
+              data-bs-toggle="modal"
+              data-bs-target="#logInModal"
+            >
+              Sign in instead
+            </a>
+          </p>
         </div>
+      </form>
+    </div>
+  </div>
+</div>
 
-        <!-- Farm Type (Select) -->
-        <div class="mb-3">
-          <label for="farmType" class="form-label">Farm Type</label>
-          <select class="form-control" id="farmType" name="farmType">
-            <option>Olives</option>
-            <option>Vegetables</option>
-            <option>Fruits</option>
-            <option>Livestock</option>
-            <option>Mixed Farming</option>
-          </select>
-        </div>
-
-        <!-- Location -->
-        <div class="mb-3">
-          <label for="location" class="form-label">Farm Location</label>
-          <input type="text" class="form-control" id="location" name="location" placeholder="Select farm location" />
-        </div>
-
-        <!-- Submit Button -->
-        <div class="mb-3">
-          <button class="btn btn-primary d-grid w-100" type="submit" data-bs-dismiss="modal">Create Account</button>
-        </div>
-
-        <!-- Footer Link -->
-        <p class="text-center mt-3">
-          <span class="grey">Already have an account? </span>
-          <a href="#" data-bs-toggle="modal" data-bs-target="#logInModal">
-            <span>Sign in instead</span>
-          </a>
-        </p>
+<!-- Location Map Modal -->
+<div class="modal fade" id="locationMapModal" tabindex="-1" aria-labelledby="locationMapModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="fa-solid fa-map"></i> Select Farm Location
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-    </form>
+      <div class="modal-body p-0">
+        <!-- Map Container -->
+        <div id="farmLocationMap" style="height: 500px; width: 100%;"></div>
+        
+        <!-- Selected Location Info -->
+        <div class="p-3 bg-light border-top">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <p class="mb-1">
+                <strong>📍 Selected Location:</strong> 
+                <span id="selectedLocationText" class="text-primary">Click on the map to select</span>
+              </p>
+              <p class="mb-0 text-muted small">
+                <i class="fa-solid fa-map-pin"></i> 
+                <span id="selectedCoordinatesText">Lat: -, Lng: -</span>
+              </p>
+            </div>
+            <div class="col-md-4 text-end">
+              <button class="btn btn-outline-secondary me-2" data-bs-dismiss="modal">
+                Cancel
+              </button>
+              <button class="btn btn-primary" (click)="confirmLocation()" 
+                data-bs-toggle="modal"
+                data-bs-target="#signUPModal">
+                <i class="fa-solid fa-check"></i> Confirm Location
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

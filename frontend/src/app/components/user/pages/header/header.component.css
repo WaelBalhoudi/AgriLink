@@ -94,5 +94,82 @@
   top: -5px;
   font-size: 15px;
 
+}/* Tag Input Container */
+.tag-input-container {
+  min-height: 50px;
+  cursor: text;
 }
 
+.tag-input-container:focus-within {
+  border-color: var(--bg-majorelle-blue, #0d6efd);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.tag-input-container input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Badge Styles */
+.badge {
+  white-space: nowrap;
+}
+
+.badge:hover {
+  opacity: 0.9;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Map Container */
+#farmLocationMap {
+  z-index: 1;
+  border-radius: 8px 8px 0 0;
+}
+
+#farmLocationMap .leaflet-container {
+  font-family: inherit;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .modal-dialog {
+    margin: 10px;
+  }
+  
+  .modal-body {
+    padding: 1rem;
+  }
+  
+  .badge {
+    font-size: 0.8rem;
+    padding: 0.4em 0.6em;
+  }
+  
+  #farmLocationMap {
+    height: 350px !important;
+  }
+}
+
+/* Location Input Styles */
+.input-group-text {
+  background-color: #fff;
+  border-left: none;
+  cursor: pointer;
+}
+
+.input-group-text:hover {
+  background-color: #f8f9fa;
+}
+
+.form-control[readonly] {
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
+
+.form-control[readonly]:hover {
+  background-color: #e9ecef;
+}

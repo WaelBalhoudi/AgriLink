@@ -46,6 +46,7 @@ a {
   color: var(--primary-color);
   text-decoration: none;
   transition: 0.3s;
+  cursor: pointer;
 }
 a:hover {
   color: var(--secondary-color);
