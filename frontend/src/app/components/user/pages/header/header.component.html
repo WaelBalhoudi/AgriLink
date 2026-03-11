@@ -1,225 +1,262 @@
+<!-- ==============================================
+     HEADER SECTION
+   ============================================== -->
 <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="assets/img/elder care logo.png" alt="logo" style="width: auto;" height="70px">
-      </a>
+    <!-- 1. LOGO -->
+    <a href="index.html">
+      <img src="assets/img/logo.png" alt="AgriLink Logo" height="65">
+    </a>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="doctors.html">Doctors</a></li>
-          <li><a href="faqs.html">FAQs</a></li>
-        
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-       
-      </nav>
-      <div class="d-flex align-items-center ">
+    <!-- 2. NAVIGATION MENU -->
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="marketplace.html">Marketplace</a></li>
+        <li><a href="farmers.html">Farmers</a></li>
+        <li><a href="services.html">Agri Services</a></li>
+        <li><a href="weather.html">Weather</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
 
-        <!-- Logged Out State (Static) -->
-        <div>
-          <div class="d-none d-sm-block">
-            <a
-            class="btn-form lgoin-btn"
+    <!-- 3. HEADER ACTIONS (Auth, Profile, Mobile Toggle) -->
+    <div class="d-flex align-items-center">
+
+      <!-- A. Logged Out State -->
+      <div>
+        <!-- Desktop Buttons -->
+        <div class="d-none d-sm-block">
+          <a class="btn-form login-btn"
              type="button"
              data-bs-toggle="modal"
-              data-bs-target="#logInModal" >Log In</a>
-           <a  class="btn-form primary-btn-form"
-           data-bs-toggle="modal"
-           data-bs-target="#signUPModal" >Sign Up</a>
-          </div>
-          <ul class="auth-action d-sm-none">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-user" aria-hidden="true"></i>
-              </a>
-              <ul class="dropdown-menu">
-                <li type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#logInModal" ><a class="dropdown-item" >Log In</a></li>
-                <li type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#signUPModal"><a class="dropdown-item" >Sign Up</a></li>
-              </ul>
-            </li>
-          </ul>
+             data-bs-target="#logInModal">
+            Log In
+          </a>
+
+          <a class="btn-form primary-btn-form"
+             data-bs-toggle="modal"
+             data-bs-target="#signUPModal">
+            Join AgriLink
+          </a>
         </div>
 
-        <!-- Logged In State (Static) -->
-        <li class="nav-item dropdown lh-1 notification d-none">
-                  <a
-                    class="nav-link dropdown-toggle position-relative"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-bell"></i>
-                    <span class="nb">
-                      3
-                    </span>
-                  </a>
-
-                  <ul class="dropdown-menu dropdown-menu-end " style="width: 400px;">
-                    <li><h6 class="dropdown-header">Notifications</h6></li>
-                    <!-- Static Notification Item -->
-                    <li class="p-3 m-3 rounded-2">
-                        <a>
-                          <div class="table-noti-info d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                              <div class="table-noti-icon">
-                                <i class="fa-solid fa-bell"></i>
-                              </div>
-                              <div class="table-noti-message ml-3">
-                                <h6>
-                                  <a href="javascript:void(0);">New Appointment Request</a>
-                                </h6>
-                                <span class="message-time">2 hours ago</span>
-                              </div>
-                            </div>
-                            <div class="dropdown ">
-                              <button
-                                class="btn btn-sm btn-light dropdown-toggle"
-                                type="button"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                              >
-                                <i class="fas fa-ellipsis-v"></i>
-                              </button>
-                              <div
-                                class="dropdown-menu dropdown-menu-right"
-                              >
-                                <a class="dropdown-item" href="#">Mark as Read</a>
-                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                    </li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item text-center text-primary" href="notifications.html">View all</a></li>
-                  </ul>
-        </li>
-
-        <ul class="user-profile d-none">
-          <li class="nav-item navbar-dropdown dropdown-user dropdown">
-            <a class="nav-link dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-              <div class="avatar avatar-online">
-                <!-- Static Placeholder for Initials -->
-                <p style="color: white;">JD</p>
-                <!-- Static Placeholder for Image -->
-                <!-- <img src="path/to/image.jpg" alt class="image-profile" /> -->
-              </div>
+        <!-- Mobile Dropdown -->
+        <ul class="auth-action d-sm-none">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-user" aria-hidden="true"></i>
             </a>
-            <ul class="dropdown-menu dropdown-menu-end" style="min-width: 250px;">
-              <li>
-                <a class="dropdown-item" href="index.html">
-                  <div class="d-flex">
-                    <div class="flex-shrink-0 me-2">
-                      <div class="avatar avatar-online ">
-                       <p style="color: white;">JD</p>
-                      </div>
-                    </div>
-                    <div class="flex-grow-1">
-                      <span class="fw-semibold d-block fs-4">John Doe</span>
-                      <small class="text-muted fs-5">Patient</small>
-                    </div>
-                  </div>
-                </a>
+            <ul class="dropdown-menu">
+              <li type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#logInModal">
+                <a class="dropdown-item">Log In</a>
               </li>
-              <li><div class="dropdown-divider"></div></li>
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="profile.html" style="cursor: pointer;">
-                  <i class="fa-solid fa-user me-2"></i>
-                  <span class="align-middle fs-5">My Profile</span>
-                </a>
-              </li>
-              <li><div class="dropdown-divider"></div></li>
-              <li>
-                <div class="dropdown-item log-out" href="#" style="cursor: pointer;">
-                  <i class="fa-solid fa-power-off me-2"></i>
-                  <span class="align-middle fs-5">Log Out</span>
-                </div>
+              <li type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#signUPModal">
+                <a class="dropdown-item">Sign Up</a>
               </li>
             </ul>
           </li>
         </ul>
-
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </div>
-    
 
-    </div>
-  </header>
+      <!-- B. Notifications (Hidden by default) -->
+      <li class="nav-item dropdown lh-1 notification d-none">
+        <a class="nav-link dropdown-toggle position-relative"
+           href="#"
+           role="button"
+           data-bs-toggle="dropdown"
+           aria-expanded="false">
+          <i class="fa-solid fa-bell"></i>
+          <span class="nb">2</span>
+        </a>
 
-<!-- Login Modal -->
+        <ul class="dropdown-menu dropdown-menu-end" style="width:400px;">
+          <li><h6 class="dropdown-header">Notifications</h6></li>
+
+          <li class="p-3 m-3 rounded-2">
+            <a>
+              <div class="table-noti-info d-flex justify-content-between align-items-center">
+
+                <!-- Notification Content -->
+                <div class="d-flex align-items-center">
+                  <div class="table-noti-icon">
+                    <i class="fa-solid fa-seedling"></i>
+                  </div>
+                  <div class="table-noti-message ml-3">
+                    <h6>
+                      <a href="javascript:void(0);">New product order</a>
+                    </h6>
+                    <span class="message-time">1 hour ago</span>
+                  </div>
+                </div>
+
+                <!-- Notification Options -->
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-light dropdown-toggle"
+                          type="button"
+                          data-bs-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="#">Mark as Read</a>
+                    <a class="dropdown-item text-danger" href="#">Delete</a>
+                  </div>
+                </div>
+
+              </div>
+            </a>
+          </li>
+
+          <li><hr class="dropdown-divider"></li>
+          <li>
+            <a class="dropdown-item text-center text-primary" href="notifications.html">View all</a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- C. User Profile (Hidden by default) -->
+      <ul class="user-profile d-none">
+        <li class="nav-item navbar-dropdown dropdown-user dropdown">
+          <a class="nav-link dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+            <div class="avatar avatar-online">
+              <p style="color:white;">FB</p>
+            </div>
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-end" style="min-width: 250px;">
+            <li>
+              <a class="dropdown-item" href="index.html">
+                <div class="d-flex">
+                  <div class="flex-shrink-0 me-2">
+                    <div class="avatar avatar-online">
+                      <p style="color:white;">FB</p>
+                    </div>
+                  </div>
+                  <div class="flex-grow-1">
+                    <span class="fw-semibold d-block fs-4">Farmer Ben</span>
+                    <small class="text-muted fs-5">Farmer</small>
+                  </div>
+                </div>
+              </a>
+            </li>
+
+            <li><div class="dropdown-divider"></div></li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="profile.html" style="cursor: pointer;">
+                <i class="fa-solid fa-user me-2"></i>
+                <span class="align-middle fs-5">My Profile</span>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="products.html" style="cursor: pointer;">
+                <i class="fa-solid fa-store me-2"></i>
+                <span class="align-middle fs-5">My Products</span>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="orders.html" style="cursor: pointer;">
+                <i class="fa-solid fa-cart-shopping me-2"></i>
+                <span class="align-middle fs-5">My Orders</span>
+              </a>
+            </li>
+
+            <li><div class="dropdown-divider"></div></li>
+            <li>
+              <div class="dropdown-item log-out" href="#" style="cursor: pointer;">
+                <i class="fa-solid fa-power-off me-2"></i>
+                <span class="align-middle fs-5">Log Out</span>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- D. Mobile Nav Toggle -->
+      <i class="mobile-nav-toggle d-xl-none fa-solid fa-bars"></i>
+
+    </div> <!-- End Header Actions -->
+  </div> <!-- End Container -->
+</header>
+
+
+<!-- ==============================================
+     MODALS SECTION
+   ============================================== -->
+
+<!-- 1. LOGIN MODAL -->
 <div class="modal fade" id="logInModal" data-bs-backdrop="static" tabindex="-1">
   <div class="modal-dialog">
-    <div class="modal-content" style="max-width: 500px; margin-inline: auto;">
+    <div class="modal-content" style="max-width:500px; margin-inline: auto;">
+      
       <div class="modal-header">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+
       <div class="modal-body" style="padding-top: 0 !important;">
-        <h4 class="mb-2">Welcome to ElderCare! 👋</h4>
-        <p class="mb-4 grey">Please sign in to your account and start the adventure</p>
+        <h4 class="mb-2">Welcome back to AgriLink 👋</h4>
+        <p class="mb-4 grey">Log in to manage your farm or orders</p>
+
         <form action="#" method="POST">
+          <!-- Email Input -->
           <div class="mb-3">
-            <label for="email" class="form-label">Email or Username</label>
-            <input
-              type="text"
-              class="form-control"
-              name="email"
-              required
-              placeholder="Enter your email or username"
-            />
+            <label for="email" class="form-label">Email</label>
+            <input type="email"
+                   class="form-control"
+                   name="email"
+                   required
+                   placeholder="Enter email">
           </div>
 
+          <!-- Password Input -->
           <div class="mb-3 form-password-toggle">
             <div class="d-flex justify-content-between">
               <label class="form-label" for="password">Password</label>
-              <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">
+              <a href="#" class="grey">
                 <small>Forgot Password?</small>
               </a>
             </div>
             <div class="input-group input-group-merge">
-              <input
-                type="password"
-                id="password"
-                class="form-control"
-                name="password"
-                required
-                placeholder="********"
-                aria-describedby="password"
-              />
+              <input type="password"
+                     id="password"
+                     class="form-control"
+                     name="password"
+                     required
+                     placeholder="********"
+                     aria-describedby="password">
               <span class="input-group-text cursor-pointer">
-                <i class="fa fa-eye"></i>
-              </span> 
+                <i class="fa-solid fa-eye"></i>
+              </span>
             </div>
           </div>
-          
 
+          <!-- Remember Me -->
           <div class="mb-3">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" id="remember-me" />
-              <label class="form-check-label grey grey" for="remember-me"> Remember Me </label>
+              <label class="form-check-label grey" for="remember-me"> Remember Me </label>
             </div>
           </div>
 
+          <!-- Submit Button -->
           <div class="mb-3">
             <button class="btn btn-primary d-grid w-100" type="submit" data-bs-dismiss="modal">
-              Sign in
+              Sign In
             </button>
           </div>
 
+          <!-- Footer Link -->
           <p class="text-center">
-            <span class="grey">New on our platform? </span>
+            <span class="grey">New here?</span>
             <a href="#" data-bs-toggle="modal" data-bs-target="#signUPModal">
-              <span>Create an account</span>
+              <span>Create account</span>
             </a>
           </p>
         </form>
@@ -228,22 +265,27 @@
   </div>
 </div>
 
-<!-- Sign Up Modal -->
+
+<!-- 2. SIGN UP MODAL -->
 <div class="modal fade" id="signUPModal" data-bs-backdrop="static" tabindex="-1">
-  <div class="modal-dialog" style="max-width: 700px; width: 100%; margin-inline: auto;">
-   <form action="#" method="POST" class="modal-content">
+  <div class="modal-dialog" style="max-width:700px; width: 100%; margin-inline: auto;">
+    <form class="modal-content" action="#" method="POST">
+      
       <div class="modal-header">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body" style="padding-top: 0 !important;">
-        <h4 class="mb-2">Adventure starts here 🚀</h4>
-        <p class="mb-4 grey">Make your app management easy and fun!</p>
 
+      <div class="modal-body" style="padding-top: 0 !important;">
+        <h4 class="mb-2">Join AgriLink 🌱</h4>
+        <p class="mb-4 grey">Create your agriculture account</p>
+
+        <!-- Full Name -->
         <div class="mb-3">
           <label for="fullName" class="form-label">Full Name</label>
-          <input type="text" class="form-control" id="fullName" name="fullName" required placeholder="Enter your full name" autofocus />
+          <input type="text" class="form-control" id="fullName" name="fullName" required placeholder="Enter your name" autofocus />
         </div>
 
+        <!-- Email & Password Row -->
         <div class="row g-2">
           <div class="col mb-3">
             <label for="email" class="form-label">Email</label>
@@ -252,154 +294,99 @@
           <div class="col mb-3 form-password-toggle">
             <label class="form-label" for="password">Password</label>
             <div class="input-group input-group-merge">
-              <input
-                type="password"
-                id="password"
-                class="form-control"
-                name="password"
-                required
-                placeholder="Enter a strong password"
-              />
+              <input type="password"
+                     id="password"
+                     class="form-control"
+                     name="password"
+                     required
+                     placeholder="Enter a strong password" />
               <span class="input-group-text cursor-pointer">
-                <i class="fa fa-eye"></i>
+                <i class="fa-solid fa-eye"></i>
               </span>
             </div>
-            <!-- Static Password Requirements -->
-            <div class="password-requirements mt-2 p-3 rounded shadow">
+            <!-- Password Requirements (From First Code) -->
+            <div class="password-requirements mt-2 p-3 rounded shadow d-none">
               <div class="password-item">
-                <i class="fa fa-times-circle text-danger"></i>
+                <i class="fa-solid fa-circle-xmark text-danger"></i>
                 <span>At least 8 characters</span>
               </div>
               <div class="password-item">
-                <i class="fa fa-times-circle text-danger"></i>
+                <i class="fa-solid fa-circle-xmark text-danger"></i>
                 <span>Includes an uppercase letter</span>
               </div>
               <div class="password-item">
-                <i class="fa fa-times-circle text-danger"></i>
+                <i class="fa-solid fa-circle-xmark text-danger"></i>
                 <span>Includes a lowercase letter</span>
               </div>
               <div class="password-item">
-                <i class="fa fa-times-circle text-danger"></i>
-                <span>Includes a special symbol</span>
-              </div>
-              <div class="password-item">
-                <i class="fa fa-times-circle text-danger"></i>
+                <i class="fa-solid fa-circle-xmark text-danger"></i>
                 <span>Includes a number</span>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Phone & DOB Row -->
         <div class="row g-2">
           <div class="col mb-3">
-            <label for="cin" class="form-label">CIN</label>
-            <input type="number" class="form-control" id="cin" name="cin" required placeholder="Enter your CIN" />
+            <label for="phoneNumber" class="form-label">Phone</label>
+            <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" required placeholder="Enter phone number" />
           </div>
-
-          <div class="col mb-3">
-            <label for="phoneNumber" class="form-label">Phone Number</label>
-            <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" required placeholder="Enter your phone number" />
-          </div>
-        </div>
-
-        <div class="row g-2">
-          <div class="col mb-3">
-            <label for="address" class="form-label">Address</label>
-            <input type="text" class="form-control" id="address" name="address" required placeholder="Enter your address" />
-          </div>
-
           <div class="col mb-3">
             <label for="dateOfBirth" class="form-label">Date of Birth</label>
             <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required />
           </div>
         </div>
 
+        <!-- Account Type (Radio Buttons) -->
         <div class="mb-3">
+          <label class="form-label">Account Type</label>
           <div class="d-flex">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="gender" id="genderMale" value="Male" required/>
-              <label class="form-check-label grey" for="genderMale">Male</label>
+              <input class="form-check-input" type="radio" name="role" id="roleFarmer" value="FARMER" required />
+              <label class="form-check-label grey" for="roleFarmer">Farmer</label>
             </div>
             <div class="form-check" style="margin-left: 20px;">
-              <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="Female" required/>
-              <label class="form-check-label grey" for="genderFemale">Female</label>
+              <input class="form-check-input" type="radio" name="role" id="roleBuyer" value="BUYER" required />
+              <label class="form-check-label grey" for="roleBuyer">Buyer</label>
+            </div>
+            <div class="form-check" style="margin-left: 20px;">
+              <input class="form-check-input" type="radio" name="role" id="roleAgronomist" value="AGRONOMIST" required />
+              <label class="form-check-label grey" for="roleAgronomist">Agronomist</label>
             </div>
           </div>
         </div>
 
+        <!-- Farm Type (Select) -->
         <div class="mb-3">
-          <div class="d-flex">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="role" id="rolePatient" value="PATIENT" required/>
-              <label class="form-check-label grey" for="rolePatient">Patient</label>
-            </div>
-            <div class="form-check" style="margin-left: 20px;">
-              <input class="form-check-input" type="radio" name="role" id="roleDoctor" value="DOCTOR" required/>
-              <label class="form-check-label grey" for="roleDoctor">Doctor</label>
-            </div>
-            <div class="form-check" style="margin-left: 20px;">
-              <input class="form-check-input" type="radio" name="role" id="roleRelative" value="RELATIVE" required/>
-              <label class="form-check-label grey" for="roleRelative">Relative</label>
-            </div>
-          </div>
+          <label for="farmType" class="form-label">Farm Type</label>
+          <select class="form-control" id="farmType" name="farmType">
+            <option>Olives</option>
+            <option>Vegetables</option>
+            <option>Fruits</option>
+            <option>Livestock</option>
+            <option>Mixed Farming</option>
+          </select>
         </div>
 
-        <!-- Static Identifier Input (Visible by default for demo) -->
+        <!-- Location -->
         <div class="mb-3">
-          <label for="identifier" class="form-label">Identifier</label>
-          <input type="number" class="form-control" id="identifier" name="identifier" placeholder="Enter identifier" />
-        </div>
-        
-        <div class="mb-3">
-          <label for="patientEmail" class="form-label">Patient Email</label>
-          <input type="email" class="form-control" id="patientEmail" name="patientEmail" placeholder="Enter your email" />
+          <label for="location" class="form-label">Farm Location</label>
+          <input type="text" class="form-control" id="location" name="location" placeholder="Select farm location" />
         </div>
 
-        <button class="btn btn-primary d-grid w-100" type="submit" data-bs-dismiss="modal">Sign up</button>
+        <!-- Submit Button -->
+        <div class="mb-3">
+          <button class="btn btn-primary d-grid w-100" type="submit" data-bs-dismiss="modal">Create Account</button>
+        </div>
 
+        <!-- Footer Link -->
         <p class="text-center mt-3">
           <span class="grey">Already have an account? </span>
           <a href="#" data-bs-toggle="modal" data-bs-target="#logInModal">
             <span>Sign in instead</span>
           </a>
         </p>
-      </div>
-</form>
-  </div>
-</div>
-
-<!-- Forgot Password Modal -->
-<div class="modal fade" id="forgotPasswordModal" data-bs-backdrop="static" tabindex="-1">
-  <div class="modal-dialog">
-    <form class="modal-content" action="#" method="POST" style="max-width: 500px; margin-inline: auto;">
-      <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" style="padding-top: 0 !important;">
-        <h4 class="mb-2">Forgot Password? 🔒</h4>
-        <p class="mb-4 grey">Enter your email and we'll send you instructions to reset your password</p>
-        
-        <div class="mb-3">
-          <label for="forgot-email" class="form-label">Email</label>
-          <input 
-            type="email" 
-            class="form-control" 
-            id="forgot-email" 
-            name="email" 
-            required 
-            placeholder="Enter your email"
-          />
-        </div>
-
-        <button class="btn btn-primary d-grid w-100" type="submit" data-bs-dismiss="modal">
-          Send Reset Link
-        </button>
-
-        <div class="text-center mt-3">
-          <a href="#" class="d-flex align-items-center justify-content-center" data-bs-toggle="modal" data-bs-target="#logInModal">
-            <i class="fa fa-chevron-left scaleX-n1-rtl fa-sm"></i> Back to login 
-          </a>
-        </div>
       </div>
     </form>
   </div>

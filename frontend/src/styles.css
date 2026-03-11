@@ -1,12 +1,15 @@
 :root {
   /* Simple Farming + Tech Color Scheme */
-  --primary-color: #10b981;        /* Fresh Green */
-  --secondary-color: #3b82f6;      /* Tech Blue */
+  --primary-color: rgb(26, 132, 58);        /* Fresh Green */
+  --primary-color-light: #27a84e;        /* Fresh Green */
+  --primary-shadow-color: rgb(26, 132, 58,0.4);        /* Fresh Green */
+  --secondary-color: #F26A1B;      /* Tech Blue */
+  --secondary-color-light: #FFA43A;      /* Tech Blue */
   --dark-color: #1f2937;           /* Dark Gray */
   --light-color: #f3f4f6;          /* Light Gray */
   --background-color: #ffffff;
   --text-color: #374151;
-  --heading-color: #111827;
+  --heading-color: white;
 }
 :root {
   --default-font: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -44,9 +47,11 @@ a {
   text-decoration: none;
   transition: 0.3s;
 }
-
+a:hover {
+  color: var(--secondary-color);
+}
 h1, h2 {
-  color: var(--heading-color) !important;
+  color: white;
   font-family: var(--heading-font);
 }
 
@@ -81,7 +86,7 @@ h1, h2 {
 }
 
 .scrolled .lgoin-btn {
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
 }
 
 /* Global Header on Scroll */
@@ -258,7 +263,7 @@ h1, h2 {
 # Button Styles (Used in Header)
 --------------------------------------------------------------*/
 .btn-form {
-  color: var(--contrast-color);
+  color: white !important;
   font-family: var(--heading-font);
   font-weight: 500;
   font-size: 16px;
@@ -473,13 +478,13 @@ h1, h2 {
 
 .primary-btn-form {
   background: var(--primary-color);
-  color: white;
+  color: white !important;
 }
 
 .btn-form:hover {
-  background: var(--secondary-color);
-  border-color: var(--secondary-color);
-  color: white;
+  background: var(--primary-color-light);
+  border-color: var(--primary-color-light);
+  color: white !important;
   transform: translateY(-2px);
 }
 
