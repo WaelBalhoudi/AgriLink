@@ -54,7 +54,7 @@ public class BeansConfig {
                 "http://localhost:4200",              // Angular local dev
                 "http://localhost:4201",              // Angular local dev
                 "http://localhost:4202",
-                "https://tunisia-luxe.vercel.app/"
+                "https://agri-link-omega.vercel.app//"
         ));
 
 

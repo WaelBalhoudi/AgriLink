@@ -11,6 +11,13 @@ springdoc:
 server:
   servlet:
     context-path: /api/v1
+# 🤖 AI Service Config (Python/FastAPI)
+ai:
+  service:
+    url: ${AI_SERVICE_URL:http://localhost:8000}
+    endpoint: ${AI_SERVICE_ENDPOINT:/predict}
+    health-endpoint: ${AI_SERVICE_HEALTH:/health}
+    timeout: ${AI_SERVICE_TIMEOUT:30}  # seconds
 
 jwt:
   secret:

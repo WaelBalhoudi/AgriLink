@@ -33,7 +33,7 @@ public class SecurityConfig {
                                         "/auth/**",
                                         "/files/**",
                                         "/notifications/**",
-                                        "/job/**",
+                                        "/detect-disease/**",
                                         "/faqs/**",
                                         "/admin/**",
                                         "/relative/**",
