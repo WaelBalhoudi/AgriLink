@@ -1,16 +1,17 @@
 package com.backend.location;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.Data;
+import lombok.*;
 
 @Embeddable
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Location {
-    @Column(nullable = false)
+
     private String address;
-    @Column(nullable = false)
     private double lat;
-    @Column(nullable = false)
     private double lng;
 }

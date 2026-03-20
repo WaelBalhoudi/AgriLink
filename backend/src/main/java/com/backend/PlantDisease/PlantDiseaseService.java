@@ -17,18 +17,21 @@ public class PlantDiseaseService {
 
     public DiseaseResponse detectDisease(
             MultipartFile image,
-            String cropType,
-            String location,
-            Double lat,
-            Double lng) {
+            DiseaseRequest request
+            ) {
 
         try {
 
-            log.info("Request: crop={}, location={}", cropType, location);
+            log.info("Request: crop={}, location={}", request.getCropType(), request.getLocation().getAddress());
 
             // 1. Call AI Service
-            Map<String, Object> aiResult = aiClientService
-                    .predictDisease(image.getBytes(), cropType, location, lat, lng)
+            Map aiResult = aiClientService
+                    .predictDisease(
+                            image.getBytes(),
+                            request.getCropType(),
+                            request.getLocation().getAddress(),
+                            request.getLocation().getLat(),
+                            request.getLocation().getLng())
                     .block();
 
             if (aiResult == null) {
@@ -47,7 +50,7 @@ public class PlantDiseaseService {
 
             // 4. Build response
             DiseaseResponse.DiseaseResponseBuilder builder = DiseaseResponse.builder()
-                    .plant(cropType)
+                    .plant(request.getCropType())
                     .disease(disease)
                     .confidence(confidence)
                     .severity(severity != null ? severity : treatmentInfo.getDefaultSeverity())
@@ -55,7 +58,7 @@ public class PlantDiseaseService {
                     .prevention(treatmentInfo.getPreventions())
                     .demoMode(demoMode);
 
-            if (location != null) builder.location(location);
+            if (request.getLocation().getAddress() != null) builder.location(request.getLocation().getAddress());
             if (demoMode) builder.message("Demo mode: Connect trained model for accurate predictions");
 
             log.info("Response: {} ({}%)", disease,
@@ -70,7 +73,7 @@ public class PlantDiseaseService {
             TreatmentService.TreatmentInfo fallback = treatmentService.getTreatment("UNKNOWN");
 
             return DiseaseResponse.builder()
-                    .plant(cropType)
+                    .plant(request.getCropType())
                     .disease("Analysis Error")
                     .confidence(0.0)
                     .severity("unknown")

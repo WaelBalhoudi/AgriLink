@@ -1,5 +1,7 @@
 package com.backend.PlantDisease;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,14 +19,14 @@ public class PlantDiseaseController {
     @PostMapping(consumes = "multipart/form-data")
     public ResponseEntity<DiseaseResponse> detectDisease(
             @RequestParam("image") MultipartFile image,
-            @RequestParam("cropType") String cropType,
-            @RequestParam(value = "location", required = false) String location,
-            @RequestParam(value = "lat", required = false) Double lat,
-            @RequestParam(value = "lng", required = false) Double lng) {
+            @RequestParam("data") String jsonData
+    ) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        DiseaseRequest request = mapper.readValue(jsonData, DiseaseRequest.class);
 
-        DiseaseResponse response =
-                plantDiseaseService.detectDisease(image, cropType, location, lat, lng);
-
+        System.out.println("=================");
+        System.out.println(request);
+        DiseaseResponse response = plantDiseaseService.detectDisease(image, request);
         return ResponseEntity.ok(response);
     }
 

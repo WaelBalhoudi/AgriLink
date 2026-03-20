@@ -1,13 +1,12 @@
 package com.backend.PlantDisease;
 
+import com.backend.location.Location;
+import jakarta.persistence.Embedded;
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
 
 @Data
 public class DiseaseRequest {
-    private MultipartFile image;
     private String cropType;
-    private String location;
-    private Double lat;
-    private Double lng;
+    @Embedded
+    private Location location;
 }

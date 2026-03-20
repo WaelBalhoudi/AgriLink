@@ -6,7 +6,7 @@ spring:
 #    password: TowardsGermany@123mmm788899
 #    driver-class-name: org.postgresql.Driver
   datasource:
-    url: jdbc:postgresql://localhost:5432/TunisiaLuxe
+    url: jdbc:postgresql://localhost:5432/AgriLink
     username: postgres
     password: wael
 #    url: ${DATABASE_URL}

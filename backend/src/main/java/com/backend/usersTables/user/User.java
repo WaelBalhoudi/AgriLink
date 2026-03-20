@@ -1,6 +1,7 @@
 package com.backend.usersTables.user;
 
 import com.backend.common.BaseEntity;
+import com.backend.location.Location;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
@@ -34,6 +35,11 @@ public class User extends BaseEntity implements UserDetails {
     private String fullName;
 
     private String password;
+    private String phoneNumber;
+    private int experience;
+    @Embedded
+    private Location farmLocation;
+    private List<String> farmType;
 
     @Enumerated(EnumType.STRING)
     private Role role;
