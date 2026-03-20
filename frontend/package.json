@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "api-gen": "ng-openapi-gen --input ./src/openapi/openapi.json --output ./src/app/services",
     "test": "ng test"
   },
   "private": true,
@@ -19,6 +20,10 @@
     "@angular/platform-browser-dynamic": "^19.1.0",
     "@angular/router": "^19.1.0",
     "@fortawesome/fontawesome-free": "^7.2.0",
+    "@srexi/purecounterjs": "^1.5.0",
+    "@types/aos": "^3.0.7",
+    "angular-code-input": "^2.0.0",
+    "aos": "^2.3.4",
     "bootstrap": "^5.3.8",
     "leaflet": "^1.9.4",
     "ngx-spinner": "^19.0.0",
@@ -39,6 +44,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-openapi-gen": "^1.0.5",
     "typescript": "~5.7.2"
   }
 }

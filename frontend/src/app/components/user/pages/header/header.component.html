@@ -25,7 +25,7 @@
     <div class="d-flex align-items-center">
 
       <!-- A. Logged Out State -->
-      <div>
+      <div *ngIf="!isUserLoggedIn">
         <!-- Desktop Buttons -->
         <div class="d-none d-sm-block">
           <a class="btn-form login-btn"
@@ -65,7 +65,7 @@
       </div>
 
       <!-- B. Notifications (Hidden by default) -->
-      <li class="nav-item dropdown lh-1 notification d-none">
+      <li class="nav-item dropdown lh-1 notification "  *ngIf="isUserLoggedIn">
         <a class="nav-link dropdown-toggle position-relative"
            href="#"
            role="button"
@@ -122,11 +122,11 @@
       </li>
 
       <!-- C. User Profile (Hidden by default) -->
-      <ul class="user-profile d-none">
+      <ul class="user-profile"  *ngIf="isUserLoggedIn">
         <li class="nav-item navbar-dropdown dropdown-user dropdown">
           <a class="nav-link dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-            <div class="avatar avatar-online">
-              <p style="color:white;">FB</p>
+           <div class="avatar avatar-online">
+              <img src="./assets/img/avatars/1.png" alt="User Avatar" class="w-px-40 h-auto rounded-circle" />
             </div>
           </a>
 
@@ -136,7 +136,7 @@
                 <div class="d-flex">
                   <div class="flex-shrink-0 me-2">
                     <div class="avatar avatar-online">
-                      <p style="color:white;">FB</p>
+                      <img src="./assets/img/avatars/1.png" alt="User Avatar" class="w-px-40 h-auto rounded-circle" />
                     </div>
                   </div>
                   <div class="flex-grow-1">
@@ -204,37 +204,52 @@
         <h4 class="mb-2">Welcome back to AgriLink 👋</h4>
         <p class="mb-4 grey">Log in to manage your farm or orders</p>
 
-        <form action="#" method="POST">
+        <form #loginForm="ngForm" (ngSubmit)="logIng(loginForm)">
           <!-- Email Input -->
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email"
-                   class="form-control"
-                   name="email"
-                   required
-                   placeholder="Enter email">
+            <input 
+             type="text"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="Enter your email or username"
+              autofocus
+              ngModel
+              required
+              #email="ngModel">
+
+          </div>
+          <div *ngIf="email.invalid && email.touched" class="alert alert-danger text danger small">
+                    <div *ngIf="email.errors?.['required']">The email is a required field</div>
           </div>
 
           <!-- Password Input -->
           <div class="mb-3 form-password-toggle">
             <div class="d-flex justify-content-between">
               <label class="form-label" for="password">Password</label>
-              <a href="#" class="grey">
+              <a href="#" class="grey" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">
                 <small>Forgot Password?</small>
               </a>
             </div>
             <div class="input-group input-group-merge">
               <input type="password"
-                     id="password"
-                     class="form-control"
-                     name="password"
-                     required
-                     placeholder="********"
-                     aria-describedby="password">
+                      id="password"
+                      class="form-control"
+                      name="password"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                      required
+                      ngModel
+                      #password="ngModel"
+                     >
               <span class="input-group-text cursor-pointer">
                 <i class="fa-solid fa-eye"></i>
               </span>
             </div>
+          </div>
+          <div *ngIf="password.invalid && password.touched" class="alert alert-danger text danger small">
+                    The password is a required field
           </div>
 
           <!-- Remember Me -->
@@ -247,7 +262,7 @@
 
           <!-- Submit Button -->
           <div class="mb-3">
-            <button class="btn btn-primary d-grid w-100" type="submit" data-bs-dismiss="modal">
+            <button class="btn btn-primary d-grid w-100" data-bs-dismiss="modal" type="submit" [disabled]="loginForm.invalid">
               Sign In
             </button>
           </div>
@@ -275,7 +290,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <form (ngSubmit)="onSubmit()">
+      <!-- ✅ Form now uses ngForm -->
+      <form #signUpForm="ngForm" (ngSubmit)="signUp(signUpForm)">
         <div class="modal-body pt-0">
           <h4 class="mb-2">Join AgriLink 🌱</h4>
           <p class="mb-4 text-muted">Create your agriculture account</p>
@@ -287,12 +303,19 @@
               type="text" 
               class="form-control" 
               id="fullName" 
-              [(ngModel)]="formData.fullName"
               name="fullName"
               placeholder="Enter your name"
+              ngModel
+              required
+              minlength="3"
+              #fullName="ngModel"
             />
+            <div *ngIf="fullName.invalid && fullName.touched" class="alert alert-danger text-danger small py-1">
+              <div *ngIf="fullName.errors?.['required']">Full name is required</div>
+              <div *ngIf="fullName.errors?.['minlength']">Name must be at least 3 characters</div>
+            </div>
           </div>
-
+          
           <!-- Email & Password Row -->
           <div class="row g-2">
             <div class="col-12 col-md-6 mb-3">
@@ -301,10 +324,17 @@
                 type="email" 
                 class="form-control" 
                 id="email" 
-                [(ngModel)]="formData.email"
                 name="email"
                 placeholder="Enter your email"
+                ngModel
+                required
+                email
+                #email="ngModel"
               />
+              <div *ngIf="email.invalid && email.touched" class="alert alert-danger text-danger small py-1">
+                <div *ngIf="email.errors?.['required']">Email is required</div>
+                <div *ngIf="email.errors?.['email']">Please enter a valid email</div>
+              </div>
             </div>
 
             <div class="col-12 col-md-6 mb-3">
@@ -314,13 +344,20 @@
                   [type]="getPasswordType()" 
                   class="form-control" 
                   id="password" 
-                  [(ngModel)]="formData.password"
                   name="password"
                   placeholder="Password"
+                  ngModel
+                  required
+                  minlength="6"
+                  #password="ngModel"
                 />
                 <span class="input-group-text cursor-pointer" (click)="togglePassword()">
                   <i class="fa-solid" [class]="getPasswordIcon()"></i>
                 </span>
+              </div>
+              <div *ngIf="password.invalid && password.touched" class="alert alert-danger text-danger small py-1">
+                <div *ngIf="password.errors?.['required']">Password is required</div>
+                <div *ngIf="password.errors?.['minlength']">Password must be at least 6 characters</div>
               </div>
             </div>
           </div>
@@ -333,10 +370,17 @@
                 type="tel" 
                 class="form-control" 
                 id="phoneNumber" 
-                [(ngModel)]="formData.phoneNumber"
                 name="phoneNumber"
                 placeholder="Enter phone number"
+                ngModel
+                required
+                pattern="^[0-9+\-\s()]{8,}$"
+                #phoneNumber="ngModel"
               />
+              <div *ngIf="phoneNumber.invalid && phoneNumber.touched" class="alert alert-danger text-danger small py-1">
+                <div *ngIf="phoneNumber.errors?.['required']">Phone number is required</div>
+                <div *ngIf="phoneNumber.errors?.['pattern']">Please enter a valid phone number</div>
+              </div>
             </div>
 
             <div class="col-12 col-md-6 mb-3">
@@ -345,26 +389,24 @@
                 type="number" 
                 class="form-control" 
                 id="experience" 
-                [(ngModel)]="formData.experience"
                 name="experience"
                 min="0" 
                 max="50" 
                 placeholder="e.g. 5"
+                ngModel
+                #experience="ngModel"
               />
             </div>
           </div>
 
-          <!-- Smart Farm Type Input -->
+          <!-- Smart Farm Type Input (Custom - kept as component property) -->
           <div class="mb-3">
             <label class="form-label">Farm Type (Select multiple or type custom)</label>
-            
-            <!-- Tag Input Container -->
             <div 
               class="tag-input-container form-control p-2 d-flex flex-wrap gap-2" 
               style="min-height: 50px; cursor: text;"
               (click)="focusTagInput()"
             >
-              <!-- Predefined Options -->
               @for (type of predefinedFarmTypes; track type) {
                 <span 
                   class="badge bg-light text-dark border" 
@@ -374,8 +416,6 @@
                   {{ type }} +
                 </span>
               }
-
-              <!-- Typing Area -->
               <input 
                 type="text" 
                 id="farmTypeText"
@@ -383,11 +423,11 @@
                 placeholder="Type & press Enter..." 
                 style="min-width: 150px;"
                 [(ngModel)]="tagInputValue"
+                name="farmTypeText"
                 (keydown)="handleTagInput($event)"
               />
             </div>
 
-            <!-- Selected Tags Display -->
             @if (farmTags.length > 0) {
               <div class="d-flex flex-wrap gap-2 mt-2">
                 @for (tag of farmTags; track tag.id) {
@@ -402,9 +442,11 @@
                 }
               </div>
             }
+            <!-- Hidden field to track validation if needed -->
+            <input type="hidden" name="farmTypes" [value]="farmTags.length > 0 ? 'valid' : ''" ngModel>
           </div>
 
-         <!-- Location Input with Map Trigger -->
+          <!-- Location Input with Map Trigger (Custom - kept as component property) -->
           <div class="mb-3">
             <label class="form-label">Farm Location</label>
             <div class="input-group">
@@ -412,11 +454,11 @@
                 type="text" 
                 class="form-control" 
                 id="location" 
-                [(ngModel)]="formData.location"
                 name="location"
                 placeholder="Click to select on map"
                 readonly
                 style="cursor: pointer; background-color: #f8f9fa;"
+                [value]="formData.location"
                 data-bs-toggle="modal"
                 data-bs-target="#locationMapModal"
               />
@@ -442,12 +484,12 @@
 
           <!-- Submit Button -->
           <div class="mb-3 mt-4">
-            <button class="btn btn-primary d-grid w-100 py-2" type="submit">
+            <button class="btn btn-primary d-grid w-100 py-2" type="submit" [disabled]="signUpForm.invalid">
               Create Account
             </button>
           </div>
 
-          <!-- Footer Link - Opens Login Modal -->
+          <!-- Footer Link -->
           <p class="text-center mt-3 mb-0">
             <span class="text-muted">Already have an account? </span>
             <a 
@@ -465,7 +507,6 @@
     </div>
   </div>
 </div>
-
 <!-- Location Map Modal -->
 <div class="modal fade" id="locationMapModal" tabindex="-1" aria-labelledby="locationMapModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -505,6 +546,92 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- forgotPassword  Modal -->
+  <div class="modal fade" id="forgotPasswordModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h4 class="mb-2">Forgot Password? 🔒</h4>
+              <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
+              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    autofocus
+                  />
+                </div>
+                <button class="btn btn-primary d-grid w-100">Send Reset Link</button>
+              </form>
+              <div class="text-center">
+                <a  href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#loginModal" class="d-flex align-items-center justify-content-center">
+                  <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
+                  Back to login
+                </a>
+              </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- Verification Account Modal (for login) -->
+<div class="modal fade" id="VerificationAccountModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body authentification">
+        <form>
+          <h1 class="my-4">Verify Your Identity</h1>
+          <p>We’ve sent a 6-digit code to your email. Please enter it below to log in securely.</p>
+          <code-input
+            #codeInput1
+            [codeLength]="6"
+            [inputType]="'number'"
+            (codeCompleted)="onCodeCompleted1($event)">
+          </code-input>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Activation Account Modal (for sign-up) -->
+<div class="modal fade" id="activationAccountModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body authentification">
+        <form>
+          <h1 class="my-4">Activate Your Account</h1>
+          <p>Check your inbox for a 6-digit activation code and enter it below to complete your registration.</p>
+          <code-input
+            #codeInput2
+            [codeLength]="6"
+            [inputType]="'number'"
+            (codeCompleted)="onCodeCompleted2($event)">
+          </code-input>
+        </form>
       </div>
     </div>
   </div>

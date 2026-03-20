@@ -1,6 +1,15 @@
-import { Component, AfterViewInit, OnDestroy } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, AfterViewInit, OnDestroy, viewChild, Renderer2, NgZone } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CodeInputComponent, CodeInputModule } from 'angular-code-input';
 import * as L from 'leaflet';
+import { NgxSpinnerService } from 'ngx-spinner';
+import Swal from 'sweetalert2';
+
+import { AuthenticationService } from '../../../../services/services';
+import { SharedService } from '../../../../services/services/shared/shared.service';
+import { AuthenticationRequest, RegistrationRequest, VerificationRequest } from '../../../../services/models';
+import { CommonModule } from '@angular/common';
 
 interface FarmTag {
   id: number;
@@ -10,11 +19,13 @@ interface FarmTag {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CodeInputModule,CommonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements AfterViewInit, OnDestroy {
+  readonly codeInput1 = viewChild.required<CodeInputComponent>('codeInput1');
+  readonly codeInput2 = viewChild.required<CodeInputComponent>('codeInput1');
   farmTags: FarmTag[] = [];
   tagInputValue: string = '';
   showPassword: boolean = false;
@@ -37,6 +48,30 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   selectedLat: number | null = null;
   selectedLng: number | null = null;
   private mapInitialized: boolean = false;
+
+  
+
+
+  userEmail="";
+  isUserLoggedIn=false;
+  isAdmin=false;
+  tokenInfo:any;
+  
+ 
+
+  constructor(
+    private renderer: Renderer2,
+    private authServer:AuthenticationService,
+    private spinner:NgxSpinnerService,
+    private sharedService:SharedService,
+    private zone: NgZone,
+    private router:Router
+  
+  ) {}
+
+  ngOnInit(){
+    this.verifyToken();
+  }
 
   // ✅ Custom marker icon from CDN
   private customIcon = L.icon({
@@ -253,5 +288,257 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
     };
     
     console.log('Form Submitted:', submitData);
+  }
+
+  logIng(f: NgForm) {
+  this.spinner.show();
+
+    if (f.invalid) {
+      this.sharedService.handleError({ status: 400, error: { message: "Please verify your data before logging in." } }, f);
+      return;
+    }
+
+    const request: AuthenticationRequest = {
+      email: f.value["email"],
+      password: f.value["password"]
+    };
+
+    this.authServer.login({ body: request }).subscribe({
+      next: (res) => {
+        this.spinner.hide()
+        this.userEmail=request.email;
+        Swal.fire(
+          "Good job!", 
+          "Please check your email for the verification code.", 
+          "success")
+        .then(() => {
+          this.sharedService.openModal("VerificationAccountModal"); // 👈 Opens your custom modal
+        });
+      },
+      error: (err) => {
+        this.sharedService.handleError(err, f); // Pass the raw error object
+      }
+    });
+  }
+
+
+  onCodeCompleted1(code: string) {
+    this.spinner.show();
+
+    const request: VerificationRequest = {
+      email: this.userEmail,
+      code: code
+    };
+
+    this.authServer.verifyCode({ body: request }).subscribe({
+      next: (response) => {
+        this.spinner.hide();
+        this.sharedService.closeModal("VerificationAccountModal");
+        if (response.token) {
+          localStorage.setItem('token', response.token);
+        }
+        Swal.fire('Success!', 'You are now logged in.', 'success');
+        this.verifyToken();
+
+      },
+  error: (err) => {
+    this.spinner.hide();
+
+    const backendError = err?.error?.error || 'Verification failed';
+
+    // Always close modal first
+    this.sharedService.closeModal("VerificationAccountModal");
+
+    setTimeout(() => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Verification Failed',
+        text: backendError,
+        confirmButtonText: 'OK',
+        allowOutsideClick: false
+      }).then(() => {
+
+        this.zone.run(() => {
+          const codeInput1 = this.codeInput1();
+          if (codeInput1) {
+            codeInput1.reset();
+          }
+
+          // 🔒 HARD STOP cases
+          if (
+            backendError.includes('Maximum verification attempts') ||
+            backendError.includes('expired')
+          ) {
+            // Do NOT reopen modal
+            // Optional: redirect or show resend option
+            return;
+          }
+
+          // 🔁 Retry allowed
+          
+
+          this.sharedService.openModal("VerificationAccountModal");
+        });
+      });
+    }, 150);
+  }
+
+
+    });
+  }
+
+
+  signUp(f: NgForm): void {
+  this.spinner.show();
+
+  // ✅ Validation check
+  if (f.invalid) {
+    this.sharedService.handleError(
+      { status: 400, error: { message: "Please fill in all required fields correctly." } },
+      f
+    );
+    return;
+  }
+
+  // ✅ Build request from form values + component properties
+  const request: RegistrationRequest = {
+    fullName: f.value["fullName"],
+    email: f.value["email"],
+    password: f.value["password"],
+    phoneNumber: f.value["phoneNumber"],
+    experience: f.value["experience"] ? +f.value["experience"] : undefined,
+    
+    // ✅ Custom fields (not in ngForm) - kept as component properties
+    farmType: this.farmTags.map(tag => tag.value), 
+   farmLocation: this.formData.location ? {
+      address: this.selectedAddress,
+      lat: this.selectedLat ?? undefined,
+      lng: this.selectedLng ?? undefined
+    } : undefined
+  };
+
+  console.log(request)
+
+  this.authServer.register({ body: request }).subscribe({
+    next: (res) => {
+      this.spinner.hide();
+      this.userEmail = request.email;
+
+      Swal.fire({
+        title: 'Account Created!',
+        text: 'We’ve sent a verification code to your email. Please enter it below to activate your account.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then(() => {
+        this.sharedService.openModal("activationAccountModal");
+      });
+    },
+    error: (err) => {
+      this.spinner.hide();
+      this.sharedService.handleError(err, f);
+    }
+  });
+}
+
+  onCodeCompleted2(code: string) {
+    this.spinner.show();
+
+    const request: VerificationRequest = {
+      email: this.userEmail,
+      code: code
+    };
+
+    this.authServer.activateAccount({ body: request }).subscribe({
+      next: (response) => {
+        this.spinner.hide();
+        this.sharedService.closeModal("activationAccountModal");
+
+        
+
+        Swal.fire({
+          title: 'Welcome to TunisiaLuxe! 🎉',
+          text: 'Your account has been successfully activated. You can now log in  our platform.',
+          icon: 'success',
+          confirmButtonText: 'Log In'
+        }).then(()=>{
+          this.sharedService.openModal("loginModal");
+
+
+        });
+      },
+      error: (err) => {
+        this.spinner.hide();
+        const backendError = err?.error?.error || 'Activation failed. Please try again.';
+
+        this.sharedService.closeModal("activationAccountModal");
+
+        setTimeout(() => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Activation Failed',
+            text: backendError,
+            confirmButtonText: 'OK',
+            allowOutsideClick: false
+          }).then(() => {
+            this.zone.run(() => {
+              // ✅ Fixed: reset codeInput2, not codeInput1
+              const codeInput2 = this.codeInput2();
+              if (codeInput2) {
+                codeInput2.reset();
+              }
+
+              // 🔒 Hard stop on critical errors
+              if (
+                backendError.includes('Maximum verification attempts') ||
+                backendError.includes('expired') ||
+                backendError.includes('invalid')
+              ) {
+                // Do not reopen modal — user must restart flow or request new code
+                // Optional: add "Resend Code" button later
+                return;
+              }
+
+              // 🔁 Allow retry
+              this.sharedService.openModal("activationAccountModal");
+            });
+          });
+        }, 150);
+      }
+    });
+  }
+  verifyToken(){
+      const token = localStorage.getItem("token");
+    if (token) {
+      const request = { token };
+      this.authServer.verifyToken({ body: request }).subscribe({
+        next: res => {
+          this.isUserLoggedIn=true;
+          this.tokenInfo=res;
+          console.log(this.tokenInfo)
+        },
+        error: err => {
+          console.log(err);
+        }
+      });
+    }
+  }
+
+
+  logOut(email:string) {
+   
+    this.authServer.logout({email:email})
+    .subscribe({
+      next:res=>{
+        console.log(res);
+        this.isUserLoggedIn=false;
+
+        localStorage.clear();
+
+        this.router.navigate(['/Home']);
+      },
+      error:err=>{console.log(err)}
+    })
+
+    
   }
 }

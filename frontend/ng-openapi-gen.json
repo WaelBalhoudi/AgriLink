@@ -1,0 +1,8 @@
+{
+    "input": "src/openapi/openapi.json",
+    "output": "src/app/services",
+    "ignoreUnusedModels": false,
+    "removeStaleFiles": true,
+    "modelType": "class"
+  }
+  

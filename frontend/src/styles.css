@@ -52,10 +52,17 @@ a:hover {
   color: var(--secondary-color);
 }
 h1, h2 {
-  color: white;
+  color: #566a7f;
   font-family: var(--heading-font);
 }
-
+button:disabled{
+  background-color: var(--primary-color-light) !important;
+  border-color: var(--primary-color-light) !important;
+}
+button:active{
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
 /*--------------------------------------------------------------
 # Global Header
 --------------------------------------------------------------*/
@@ -290,7 +297,7 @@ h1, h2 {
 # Global Footer
 --------------------------------------------------------------*/
 .user.footer {
-  color: var(--default-color);
+  color: #fff;
   background-color: #060606 !important;
   background: url("./../public/assets/img/hero-carousel/1.png") top center no-repeat;
   background-size: cover;
@@ -304,7 +311,7 @@ h1, h2 {
 
 .user.footer:before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 20%);
+  background: color-mix(in srgb,#000, transparent 80%);
   position: absolute;
   inset: 0;
 }
@@ -324,7 +331,7 @@ h1, h2 {
 }
 
 .user.footer .footer-about .logo span {
-  color: var(--heading-color);
+  color: #fff !important;
   font-family: var(--heading-font);
   font-size: 26px;
   font-weight: 700;
@@ -343,9 +350,9 @@ h1, h2 {
   width: 40px;
   height: 40px;
   border-radius: 5px;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  border: 1px solid color-mix(in srgb, #fff , transparent 50%);
   font-size: 16px;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  color: color-mix(in srgb, #fff, transparent 20%);
   margin-right: 10px;
   transition: 0.3s;
 }
@@ -389,7 +396,7 @@ h1, h2 {
 }
 
 .user.footer .footer-links ul a {
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  color: color-mix(in srgb, #fff, transparent 30%);
   display: inline-block;
   line-height: 1;
 }
@@ -405,7 +412,7 @@ h1, h2 {
 .user.footer .copyright {
   padding-top: 25px;
   padding-bottom: 25px;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-top: 1px solid color-mix(in srgb, #FFF, transparent 90%);
 }
 
 .user.footer .copyright p {
@@ -553,6 +560,12 @@ h1, h2 {
 .hero .carousel-control-next-icon:hover,
 .hero .carousel-control-prev-icon:hover {
   background: var(--primary-color);
+}
+.modal-body{
+  padding-top: 0 !important;
+}
+.modal-header{
+  height: 0 !important;
 }
 
 /* Responsive */

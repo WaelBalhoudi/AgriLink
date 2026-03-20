@@ -34,11 +34,13 @@
               "public/assets/css/theme-default.css",
               "node_modules/leaflet/dist/leaflet.css",
               "src/styles.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "node_modules/aos/dist/aos.css"
             ],
             "scripts": [
               "public/assets/js/main.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/aos/dist/aos.js"
             ]
           },
            "configurations": {
@@ -102,11 +104,13 @@
               "public/assets/css/theme-default.css",
               "node_modules/leaflet/dist/leaflet.css",
               "src/styles.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "node_modules/aos/dist/aos.css"
             ],
             "scripts": [
               "public/assets/js/main.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/aos/dist/aos.js"
             ]
           }
         }
