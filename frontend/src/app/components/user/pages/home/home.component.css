@@ -466,6 +466,7 @@
   padding-top: 10px;
   color: var(--text-color);
   font-weight: 500;
+  
 }
 
 .features-cards ul li i {
@@ -473,8 +474,8 @@
   color: var(--primary-color);
   margin-right: 10px;
   background: #fff;
-  width: 20px;
-  height: 20px;
+  width: 23px;
+  height: 23px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -526,7 +527,7 @@
 }
 
 .alt-services-2 .icon-box i {
-  color: var(--secondary-color); /* Using Orange for variety */
+  color: var(--primary-color); /* Using Orange for variety */
   margin-right: 15px;
   font-size: 28px;
   line-height: 1;
@@ -544,7 +545,7 @@
   font-weight: 700;
   margin-bottom: 10px;
   font-size: 18px;
-  color: var(--heading-color);
+  color: var(--primary-color);
   font-family: var(--heading-font);
 }
 
@@ -587,21 +588,23 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  color: var(--heading-color);
+  color:#3c3c3c;
   font-family: var(--heading-font);
 }
 
 .faq .faq-container .faq-item h3 .num {
-  color: var(--primary-color);
+  color: #3c3c3c;
   padding-right: 10px;
   font-weight: 700;
   font-size: 20px;
 }
 
-.faq .faq-container .faq-item h3:hover {
+.faq .faq-container .faq-item:hover h3 {
   color: var(--primary-color);
 }
-
+.faq .faq-container .faq-item:hover h3  .num {
+  color: var(--primary-color);
+}
 .faq .faq-container .faq-item .faq-content {
   display: grid;
   grid-template-rows: 0fr;
@@ -640,6 +643,10 @@
 }
 
 .faq .faq-container .faq-active h3 {
+  color: var(--primary-color);
+}
+
+.faq .faq-container .faq-active h3 .num {
   color: var(--primary-color);
 }
 

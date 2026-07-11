@@ -1,6 +1,6 @@
-import { Component, AfterViewInit, OnDestroy, viewChild, Renderer2, NgZone } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, viewChild, Renderer2, NgZone, ElementRef } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CodeInputComponent, CodeInputModule } from 'angular-code-input';
 import * as L from 'leaflet';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -19,7 +19,7 @@ interface FarmTag {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [FormsModule,CodeInputModule,CommonModule],
+  imports: [FormsModule,CodeInputModule,CommonModule,RouterLink],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
@@ -65,12 +65,28 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
     private spinner:NgxSpinnerService,
     private sharedService:SharedService,
     private zone: NgZone,
-    private router:Router
+    private router:Router,
+    private el: ElementRef,
+
   
   ) {}
 
   ngOnInit(){
     this.verifyToken();
+    this.toggleActiveClass()
+  }
+    toggleActiveClass() {
+    const navLinks = this.el.nativeElement.querySelectorAll('.navmenu a');
+
+    navLinks.forEach((link: HTMLElement) => {
+      this.renderer.listen(link, 'click', () => {
+        // Remove 'active' from all links
+        navLinks.forEach((l: HTMLElement) => this.renderer.removeClass(l, 'active'));
+
+        // Add 'active' to the clicked link
+        this.renderer.addClass(link, 'active');
+      });
+    });
   }
 
   // ✅ Custom marker icon from CDN

@@ -1,6 +1,6 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import AOS from 'aos';
-import 'aos/dist/aos.css';
+// import 'aos/dist/aos.css';
 declare const PureCounter: any;
 @Component({
   selector: 'app-home',
@@ -9,7 +9,18 @@ declare const PureCounter: any;
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
+ 
  @ViewChild('fileInput') fileInput!: ElementRef;
+  constructor(
+    private renderer:Renderer2,
+    private el:ElementRef,
+  ){
+
+  }
+  ngOnInit(){
+    this.activeFaqItem()
+  }
  ngAfterViewInit(): void {
     AOS.init({
       once: true, // animation happens only once
@@ -36,4 +47,26 @@ export class HomeComponent {
       // this.uploadImage(file);
     }
   }
+   activeFaqItem() {
+    const faqItems = this.el.nativeElement.querySelectorAll('.faq-item');
+  
+  
+    faqItems.forEach((faqItem: HTMLElement) => {
+      this.renderer.listen(faqItem, 'click', (event) => {
+  
+        faqItems.forEach((item: HTMLElement) => {
+          this.renderer.removeClass(item, 'faq-active');
+        });
+  
+        this.renderer.addClass(faqItem, 'faq-active');
+  
+        const content = faqItem.querySelector('.faq-content') as HTMLElement;
+        if (content) {
+          const isActive = faqItem.classList.contains('faq-active');
+          this.renderer.setStyle(content, 'display', isActive ? 'block' : 'none');
+        }
+      });
+    });
+  }
+
 }

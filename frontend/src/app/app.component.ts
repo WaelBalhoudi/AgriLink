@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
 import { NgxSpinnerModule, NgxSpinnerService } from "ngx-spinner";
-import {  RouterOutlet } from '@angular/router';
+import {  NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,18 @@ import {  RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'AgriLink';
-  constructor(private spinner: NgxSpinnerService) {}
+ constructor(
+  private spinner: NgxSpinnerService,
+    private router:Router,
+    private viewportScroller: ViewportScroller,
 
+  ){
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.viewportScroller.scrollToPosition([0, 0]); // Scroll to top
+      }
+    });
+  }
   showSpinner() {
     this.spinner.show();
     setTimeout(() => this.spinner.hide(), 1500);

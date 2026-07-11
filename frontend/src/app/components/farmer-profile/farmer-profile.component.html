@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Make sure to link your CSS file here -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+
+            <!-- SIDEBAR -->
+            <!-- Matches CSS: .layout-menu, .bg-menu-theme -->
+            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+
+                <!-- LOGO -->
+                <div class="app-brand demo my-3 px-3">
+                    <a href="/Home" class="app-brand-link">
+                        <img src="./assets/img/logo.png" alt="Logo" height="50" />
+                    </a>
+                   <!-- In your sidebar section -->
+                    <a
+                        *ngIf="sidebarOpen"
+                        #menuToggle
+                        (click)="toggleMenu()"
+                        id="mobile-menu-btn"
+                        class="menu-link text-large ms-auto d-block d-xl-none mobile-menu-btn"
+                    >
+                        <i class="fa-solid fa-chevron-left fa-sm align-middle"></i>
+                    </a>
+                </div>
+
+                <div class="menu-inner-shadow"></div>
+
+                <ul class="menu-inner py-1">
+                    <!-- Dashboard -->
+                    <!-- Matches CSS: .menu-item.active -->
+                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">
+                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/Dashboard">
+                            <i class="menu-icon fa-solid fa-chart-line"></i>
+                            <div>Dashboard</div>
+                        </a>
+                    </li>
+
+                    <!-- Profile Details -->
+                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active">
+                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/ProfileDetails">
+                            <i class="menu-icon fa-solid fa-user"></i>
+                            <div>Profile Details</div>
+                        </a>
+                    </li>
+
+                     <!-- Corps -->
+                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active">
+                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/Corps">
+                            <i class="menu-icon fa-solid fa-seedling"></i>
+                            <div>Corps</div>
+                        </a>
+                    </li>
+
+                    <!-- Detection Hitory -->
+                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active">
+                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/DetectionHistory">
+                            <i class="menu-icon fa-solid fa-history"></i>
+                            <div>Detection history</div>
+                        </a>
+                    </li>
+
+                    <!-- Products -->
+                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active">
+                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/Products">
+                            <i class="menu-icon fa-solid fa-product-hunt"></i>
+                            <div>Products</div>
+                        </a>
+                    </li>
+
+                    <!-- Orders -->
+                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active">
+                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/Orders">
+                            <i class="menu-icon fa-solid fa-shopping-cart"></i>
+                            <div>Orders</div>
+                        </a>
+                    </li>
+
+                    <!-- Reviews -->
+                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active">
+                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/Reviews">
+                            <i class="menu-icon fa-solid fa-eye"></i>
+                            <div>Reviews</div>
+                        </a>
+                    </li>
+
+                    <!-- Settings -->
+                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active">
+                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/settings">
+                            <i class="menu-icon fa-solid fa-cog"></i>
+                            <div>Settings</div>
+                        </a>
+                    </li>
+
+                    <!-- Account Header -->
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">Account</span>
+                    </li>
+
+                    <!-- Logout -->
+                    <li (click)="logOut()" class="menu-item">
+                        <a class="menu-link" style="cursor: pointer;">
+                            <i class="menu-icon fa-solid fa-right-from-bracket"></i>
+                            <div>Log Out</div>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- MAIN PAGE -->
+            <!-- Matches CSS: .layout-page -->
+            <div class="layout-page">
+
+                <!-- NAVBAR -->
+                <nav class="layout-navbar navbar navbar-expand-xl navbar-detached  d-flex align-items-center bg-navbar-theme" >
+
+                    <!-- MOBILE MENU BUTTON -->
+                    <div class="layout-menu-toggle navbar-nav d-xl-none" >
+                        <a class="nav-item nav-link px-0 me-xl-4" (click)="toggleMenu()" style="cursor: pointer;">
+                            <i class="fas fa-bars"></i>
+                        </a>
+                    </div>
+
+                    <!-- SEARCH -->
+                    <div class="navbar-nav align-items-center" >
+                        <div class="nav-item d-flex align-items-center">
+                            <i class="fas fa-search fs-6"></i>
+                            <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." style="width: 150px;"/>
+                        </div>
+                    </div>
+
+                    <!-- USER MENU & NOTIFICATIONS -->
+                    <ul class="navbar-nav flex-row align-items-center ms-auto" >
+
+                        <!-- ADDED: Notification Icon to match CSS .notification-icon -->
+                        <li class="nav-item notification-icon me-3">
+                            <a class="nav-link">
+                                <i class="fas fa-bell fa-lg"></i>
+                                <!-- The CSS targets this span specifically -->
+                                <span class="badge bg-danger rounded-pill">3</span>
+                            </a>
+                        </li>
+
+                         <!-- User -->
+                    <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                        <div class="avatar avatar-online">
+                        <img src="./assets/img/avatars/1.png" alt="User Avatar" class="w-px-40 h-auto rounded-circle" />
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                        <a class="dropdown-item" href="#">
+                            <div class="d-flex">
+                            <div class="flex-shrink-0 me-3">
+                                <div class="avatar avatar-online">
+                                <img src="./assets/img/avatars/1.png" alt="User Avatar" class="w-px-40 h-auto rounded-circle" />
+                                </div>
+                            </div>
+                            <div class="flex-grow-1">
+                                <span class="fw-semibold d-block">{{userData.fullName}}</span>
+                                <small class="text-muted">{{userData.email}}</small>
+                            </div>
+                            </div>
+                        </a>
+                        </li>
+                        <li><div class="dropdown-divider"></div></li>
+                        <li><a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-user me-2"></i> My Profile</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0)"><i class="bx bx-cog me-2"></i> Settings</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0)" (click)="logOut()"><i class="bx bx-power-off me-2"></i> Log Out</a></li>
+                    </ul>
+                    </li>
+                    </ul>
+                </nav>
+
+                <!-- CONTENT -->
+                <div class="content-wrapper">
+                    <div class="container-xxl flex-grow-1 container-p-y">
+                        <!-- ANGULAR ROUTES -->
+                        <router-outlet></router-outlet>
+
+                    </div>
+
+                    <!-- FOOTER -->
+                    <footer class="content-footer footer bg-footer-theme">
+                        <div class="container-xxl d-flex justify-content-between py-2">
+                            <div>© {{year}} AgriLink FarmerProfile</div>
+                            <div>Agricultural Management Platform</div>
+                        </div>
+                    </footer>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- OVERLAY -->
+        <div class="layout-overlay" (click)="toggleMenu()"></div>
+    </div>
+</body>
+</html>

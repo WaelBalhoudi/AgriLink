@@ -1,0 +1,12 @@
+    <!-- Page Title -->
+    <div class="page-title dark-background" [style]="{'background-image': 'url(' + hero.imageUrl + ')'}">
+        <div class="container position-relative">
+          <h1>{{hero.title}}</h1>
+          <nav class="breadcrumbs">
+            <ol>
+              <li><a routerLink="/Home" style="color: var(--primary-color);">Home</a></li>
+              <li class="current">{{hero.subtitle}}</li>
+            </ol>
+          </nav>
+        </div>
+    </div><!-- End Page Title -->

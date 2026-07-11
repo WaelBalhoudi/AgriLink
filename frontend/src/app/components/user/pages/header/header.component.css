@@ -35,9 +35,8 @@
     margin-right: 10px;
 
 }
-li::marker {
-  display: none !important;
-  background-color: transparent !important;
+.notification ::marker{
+  border: solid red 1px !important;
 }
 .avatar img{
     width: 45px !important;
@@ -47,7 +46,7 @@ li::marker {
  }
 
 .hide-arrow::after{
-    display: none;
+    display: none !important;
 }
 
 

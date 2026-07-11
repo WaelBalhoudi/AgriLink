@@ -1,6 +1,6 @@
 :root {
   /* Simple Farming + Tech Color Scheme */
-  --primary-color: rgb(26, 132, 58);        /* Fresh Green */
+  --primary-color: #1a843a;        /* Fresh Green */
   --primary-color-light: #27a84e;        /* Fresh Green */
   --primary-shadow-color: rgb(26, 132, 58,0.4);        /* Fresh Green */
   --secondary-color: #F26A1B;      /* Tech Blue */
@@ -525,7 +525,7 @@ button:active{
   content: "";
   position: absolute;
   inset: 0;
-  background:  rgba(1, 62, 62, 0.3);
+  background:  #013e3e4d;
   z-index: 2;
 }
 
