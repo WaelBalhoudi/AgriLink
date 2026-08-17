@@ -1,4 +1,4 @@
-<div align="center">
+
 
 ![Angular](https://img.shields.io/badge/Angular-Frontend-DD0031?logo=angular&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Programming_Language-3178C6?logo=typescript&logoColor=white)
@@ -23,7 +23,7 @@
 
 <img src="docs/images/agrilink-banner.png" alt="AgriLink" width="100%">
 
-</div>
+
 
 ---
 
