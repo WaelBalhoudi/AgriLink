@@ -61,7 +61,8 @@ public class AuthenticationService {
                 .createdDate(LocalDate.now())
                 .build();
        userRepository.save(client);
-       sendValidationEmail(client,"validate account");
+       sendValidationEmail(client,"activation account");
+//       test
     }
 
 
@@ -116,7 +117,7 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
-        sendValidationEmail(user,"activation account");
+        sendValidationEmail(user,"validate account");
     }
 
     public void activateAccount(VerificationRequest request) throws AccessDeniedException {

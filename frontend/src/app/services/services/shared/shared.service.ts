@@ -79,11 +79,16 @@ export class SharedService {
   }
 
 openModal(id: string) {
+  console.log("from open modal fucntion ")
   const modalElement = document.getElementById(id);
+  console.log(modalElement)
   if (modalElement) {
+    console.log("yes")
     const modal = new bootstrap.Modal(modalElement);
     modal.show();
   }
+    console.log("no")
+
 }
 
 closeModal(id: string) {

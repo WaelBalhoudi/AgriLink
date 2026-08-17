@@ -25,7 +25,7 @@ interface FarmTag {
 })
 export class HeaderComponent implements AfterViewInit, OnDestroy {
   readonly codeInput1 = viewChild.required<CodeInputComponent>('codeInput1');
-  readonly codeInput2 = viewChild.required<CodeInputComponent>('codeInput1');
+  readonly codeInput2 = viewChild.required<CodeInputComponent>('codeInput2');
   farmTags: FarmTag[] = [];
   tagInputValue: string = '';
   showPassword: boolean = false;
@@ -469,18 +469,17 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
         this.spinner.hide();
         this.sharedService.closeModal("activationAccountModal");
 
-        
-
-        Swal.fire({
-          title: 'Welcome to TunisiaLuxe! 🎉',
-          text: 'Your account has been successfully activated. You can now log in  our platform.',
-          icon: 'success',
-          confirmButtonText: 'Log In'
-        }).then(()=>{
-          this.sharedService.openModal("loginModal");
-
-
-        });
+        setTimeout(() => {
+          Swal.fire({
+            title: 'Welcome to AgriLink ! 🎉',
+            text: 'Your account has been successfully activated. You can now log in to our platform.',
+            icon: 'success',
+            confirmButtonText: 'Log In'
+          }).then(() => {
+            console.log("yes let's open login modal !!!!")
+            this.sharedService.openModal("logInModal");
+          });
+        }, 150);
       },
       error: (err) => {
         this.spinner.hide();
