@@ -1,6 +1,3 @@
-````markdown
-
-
 ![Angular](https://img.shields.io/badge/Angular-Frontend-DD0031?logo=angular&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Programming_Language-3178C6?logo=typescript&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-Backend-6DB33F?logo=springboot&logoColor=white)
@@ -91,7 +88,7 @@ into a **community-based agricultural early-warning system**.
 
 The most important workflow in AgriLink is the disease detection and
 sharing system.
-
+<div align="center">
 ```text
                     FARMER
                        │
@@ -122,12 +119,12 @@ sharing system.
                                 ▼
                          Crop Protection
 ````
-
+</div>
 The core value of AgriLink is not simply detecting a disease.
 
 The real objective is to transform a single farmer's detection into
 **useful localized information for other farmers who may be at risk.**
-
+<div align="center">
 ```text
 Individual Detection
         ↓
@@ -145,7 +142,7 @@ Early Action
         ↓
 Reduced Crop Risk
 ```
-
+</div>
 ---
 
 # ✨ Key Features
@@ -155,7 +152,7 @@ Reduced Crop Risk
 Farmers can submit crop images for AI-powered analysis.
 
 ### Detection Workflow
-
+<div align="center">
 ```text
 Upload Image
      ↓
@@ -171,7 +168,7 @@ Confidence Score
      ↓
 Symptoms & Recommendations
 ```
-
+</div>
 Planned capabilities:
 
 * Image upload and preview
@@ -194,7 +191,7 @@ This is the **core differentiating feature of AgriLink**.
 
 After receiving a detection result, a farmer can choose whether to
 share it with nearby farmers.
-
+<div align="center">
 ```text
 Farmer A
    │
@@ -218,7 +215,7 @@ Farmer B        Farmer C
            ▼
       Early Warning
 ```
-
+</div>
 Features include:
 
 * Share or keep detections private
@@ -312,7 +309,7 @@ Each product can contain:
 * Order creation
 
 ## Order Lifecycle
-
+<div align="center">
 ```text
 PENDING
    │
@@ -330,7 +327,7 @@ READY
    ▼
 COMPLETED
 ```
-
+</div>
 ---
 
 # 🗺️ Farmer Discovery
@@ -495,7 +492,7 @@ events.
 # ⭐ Reviews
 
 Reviews are connected to completed marketplace transactions.
-
+<div align="center">
 ```text
 Order
   │
@@ -508,7 +505,7 @@ Buyer can submit review
   ├── Rating
   └── Comment
 ```
-
+</div>">
 This prevents arbitrary reviews and keeps the reputation system
 connected to actual marketplace transactions.
 
@@ -517,7 +514,7 @@ connected to actual marketplace transactions.
 # 🏗️ System Architecture
 
 AgriLink follows a service-oriented architecture.
-
+<div align="center">
 ```text
                          USERS
                            │
@@ -553,7 +550,7 @@ AgriLink follows a service-oriented architecture.
                              ▼
                       Nearby Farmers
 ```
-
+</div>
 ---
 
 # 🧰 Technology Stack
@@ -621,7 +618,7 @@ AgriLink follows a service-oriented architecture.
 
 AgriLink is designed to run on a self-hosted virtualized environment
 rather than depending on expensive cloud infrastructure.
-
+<div align="center">
 ```text
 Physical Machine
        │
@@ -643,7 +640,7 @@ Physical Machine
               ├── Grafana
               └── Logging
 ```
-
+</div>
 The final number and distribution of VMs will depend on available
 hardware resources.
 
@@ -652,7 +649,7 @@ hardware resources.
 # ⚙️ DevOps Architecture
 
 The infrastructure is intended to be reproducible and automated.
-
+<div align="center">
 ```text
                     GitHub
                        │
@@ -679,7 +676,7 @@ The infrastructure is intended to be reproducible and automated.
                        ▼
                    AgriLink
 ```
-
+</div>
 ---
 
 # 📊 Monitoring & Observability
@@ -706,7 +703,7 @@ application and infrastructure.
 * Database performance
 
 ## Visualization
-
+<div align="center">
 ```text
 Services
    │
@@ -721,7 +718,7 @@ Grafana
    ├── AI Dashboard
    └── Application Health
 ```
-
+</div>
 ---
 
 # 🛡️ Security
@@ -798,7 +795,7 @@ Testing will be integrated throughout the development lifecycle.
 ---
 
 # 📁 Project Structure
-
+<div align="center">
 ```text
 AgriLink/
 │
@@ -834,7 +831,7 @@ AgriLink/
 ├── SECURITY.md
 └── .gitignore
 ```
-
+</div>
 ---
 
 # 🚀 Development Roadmap
@@ -1434,7 +1431,7 @@ AgriLink documentation is organized by technical domain.
 
 AgriLink is designed as a full-stack engineering, AI, cybersecurity,
 DevOps, and infrastructure project demonstrating experience across:
-
+<div align="center">
 ```text
                     AGRILINK
                        │
@@ -1458,7 +1455,7 @@ DevOps, and infrastructure project demonstrating experience across:
        └── VMs         ├── Auditing     └── Logging
                        └── DevSecOps
 ```
-
+</div>
 The objective is not simply to create a web application, but to
 demonstrate the ability to:
 
