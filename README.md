@@ -19,76 +19,62 @@
 
 ### Smart Agriculture Platform for AI-Powered Crop Disease Detection, Farmer Collaboration & Agricultural Commerce
 
+AgriLink is a smart agriculture platform designed to help farmers **detect crop diseases using artificial intelligence, share disease detections with nearby farmers, receive early warnings, and participate in a connected agricultural marketplace.**
+
+The core idea is:
+
 **Detect. Share. Warn. Protect.**
 
 <img src="docs/images/agrilink-banner.png" alt="AgriLink - Smart Agriculture Platform" width="100%">
-
-
-
 ---
 
 ## 📖 Table of Contents
 
-- [🎯 Project Vision](#-project-vision)
-- [🚨 Core Concept](#-core-concept)
-- [✨ Key Features](#-key-features)
-  - [🤖 AI Plant Disease Detection](#-ai-plant-disease-detection)
-  - [📢 Disease Sharing & Early Warning](#-disease-sharing--early-warning)
-  - [🌾 Farmer Management](#-farmer-management)
-  - [🛒 Agricultural Marketplace](#-agricultural-marketplace)
-  - [🗺️ Farmer Discovery](#️-farmer-discovery)
-  - [💬 Communication](#-communication)
-  - [🛠️ Agricultural Services](#️-agricultural-services)
-  - [🌦️ Weather](#️-weather)
-  - [🔐 Authentication & Authorization](#-authentication--authorization)
-  - [👨‍💼 Administration](#-administration)
-  - [⭐ Reviews](#-reviews)
-- [🏗️ System Architecture](#️-system-architecture)
-- [🧰 Technology Stack](#-technology-stack)
-- [🐳 Deployment Architecture](#-deployment-architecture)
-- [⚙️ DevOps Architecture](#️-devops-architecture)
-- [📊 Monitoring & Observability](#-monitoring--observability)
-- [🛡️ Security](#️-security)
-- [🧪 Testing Strategy](#-testing-strategy)
-- [📁 Project Structure](#-project-structure)
-- [🚀 Development Roadmap](#-development-roadmap)
-- [🧭 Development Philosophy](#-development-philosophy)
-- [📚 Documentation](#-documentation)
-- [🎓 Portfolio Objectives](#-portfolio-objectives)
-- [🌱 Future Vision](#-future-vision)
-- [📌 Project Status](#-project-status)
-- [👨‍💻 Author](#-author)
+* [🎯 Project Vision](#-project-vision)
+* [🚨 Core Concept](#-core-concept)
+* [✨ Key Features](#-key-features)
+* [🏗️ System Architecture](#️-system-architecture)
+* [🧰 Technology Stack](#-technology-stack)
+* [🐳 Deployment Architecture](#-deployment-architecture)
+* [⚙️ DevOps Architecture](#️-devops-architecture)
+* [📊 Monitoring & Observability](#-monitoring--observability)
+* [🛡️ Security](#️-security)
+* [🧪 Testing Strategy](#-testing-strategy)
+* [📁 Project Structure](#-project-structure)
+* [🚀 Development Roadmap](#-development-roadmap)
+* [🧭 Development Philosophy](#-development-philosophy)
+* [📚 Documentation](#-documentation)
+* [🎓 Portfolio Objectives](#-portfolio-objectives)
+* [🌱 Future Vision](#-future-vision)
+* [📌 Project Status](#-project-status)
+* [👨‍💻 Author](#-author)
 
 ---
 
 # 🎯 Project Vision
 
-Agricultural diseases can spread rapidly while farmers may have limited
-access to early information about outbreaks in their surrounding areas.
+Agricultural diseases can spread rapidly while farmers may have limited access to early information about outbreaks in their surrounding areas.
 
-AgriLink aims to create a **connected agricultural ecosystem** where
-farmers can:
+AgriLink aims to create a **connected agricultural ecosystem** where farmers can:
 
-- 🔬 Detect crop diseases using AI
-- 📢 Share disease detections with nearby farmers
-- 📍 Receive localized disease alerts
-- 🗺️ Discover farmers and agricultural activity around them
-- 🌾 Manage crops
-- 🛒 Buy and sell agricultural products
-- 🤝 Communicate with farmers and buyers
-- 🌦️ Access weather information and agricultural recommendations
-- 🛠️ Discover and offer agricultural services
+* 🔬 Detect crop diseases using AI
+* 📢 Share disease detections with nearby farmers
+* 📍 Receive localized disease alerts
+* 🗺️ Discover farmers and agricultural activity around them
+* 🌾 Manage crops
+* 🛒 Buy and sell agricultural products
+* 🤝 Communicate with farmers and buyers
+* 🌦️ Access weather information and agricultural recommendations
+* 🛠️ Discover and offer agricultural services
 
-The long-term objective is to transform individual disease detection
-into a **community-based agricultural early-warning system**.
+The long-term objective is to transform individual disease detection into a **community-based agricultural early-warning system**.
 
 ---
 
 # 🚨 Core Concept
 
-The most important workflow in AgriLink is the disease detection and
-sharing system.
-<div align="center">
+The most important workflow in AgriLink is the disease detection and sharing system.
+
 ```text
                     FARMER
                        │
@@ -118,13 +104,12 @@ sharing system.
                                 │
                                 ▼
                          Crop Protection
-````
-</div>
+```
+
 The core value of AgriLink is not simply detecting a disease.
 
-The real objective is to transform a single farmer's detection into
-**useful localized information for other farmers who may be at risk.**
-<div align="center">
+The real objective is to transform a single farmer's detection into **useful localized information for other farmers who may be at risk.**
+
 ```text
 Individual Detection
         ↓
@@ -142,7 +127,7 @@ Early Action
         ↓
 Reduced Crop Risk
 ```
-</div>
+
 ---
 
 # ✨ Key Features
@@ -152,7 +137,7 @@ Reduced Crop Risk
 Farmers can submit crop images for AI-powered analysis.
 
 ### Detection Workflow
-<div align="center">
+
 ```text
 Upload Image
      ↓
@@ -168,7 +153,7 @@ Confidence Score
      ↓
 Symptoms & Recommendations
 ```
-</div>
+
 Planned capabilities:
 
 * Image upload and preview
@@ -185,13 +170,12 @@ Planned capabilities:
 
 ---
 
-## 📢 Disease Sharing & Early Warning
+# 📢 Disease Sharing & Early Warning
 
 This is the **core differentiating feature of AgriLink**.
 
-After receiving a detection result, a farmer can choose whether to
-share it with nearby farmers.
-<div align="center">
+After receiving a detection result, a farmer can choose whether to share it with nearby farmers.
+
 ```text
 Farmer A
    │
@@ -215,7 +199,7 @@ Farmer B        Farmer C
            ▼
       Early Warning
 ```
-</div>
+
 Features include:
 
 * Share or keep detections private
@@ -227,8 +211,7 @@ Features include:
 * Disease map
 * Approximate location protection
 
-AgriLink is designed so that the **exact location of the reporting
-farmer is not unnecessarily exposed**.
+AgriLink is designed so that the **exact location of the reporting farmer is not unnecessarily exposed**.
 
 ---
 
@@ -266,22 +249,11 @@ Farmers can:
 * Update crops
 * Delete crops
 
-Crop information can include:
-
-* Crop name
-* Variety
-* Planting date
-* Expected harvest date
-* Cultivation area
-* Status
-* Images
-
 ---
 
 # 🛒 Agricultural Marketplace
 
-AgriLink provides a marketplace where farmers can offer agricultural
-products and buyers can discover and purchase them.
+AgriLink provides a marketplace where farmers can offer agricultural products and buyers can discover and purchase them.
 
 ## Products
 
@@ -309,7 +281,7 @@ Each product can contain:
 * Order creation
 
 ## Order Lifecycle
-<div align="center">
+
 ```text
 PENDING
    │
@@ -327,13 +299,12 @@ READY
    ▼
 COMPLETED
 ```
-</div>
+
 ---
 
 # 🗺️ Farmer Discovery
 
-Farmers can discover other farmers through both list-based and
-map-based interfaces.
+Farmers can discover other farmers through both list-based and map-based interfaces.
 
 ## List View
 
@@ -417,8 +388,7 @@ A service can contain:
 
 # 🌦️ Weather
 
-AgriLink will provide location-aware weather information with an
-agricultural focus.
+AgriLink will provide location-aware weather information with an agricultural focus.
 
 Potential information includes:
 
@@ -428,9 +398,6 @@ Potential information includes:
 * Wind
 * Forecast
 * Agricultural recommendations
-
-The objective is not simply to display weather data, but to connect
-environmental conditions with agricultural decision-making.
 
 ---
 
@@ -483,16 +450,12 @@ Admin Dashboard
 └── Audit Logs
 ```
 
-Administrators will be able to monitor platform activity, manage users,
-moderate content, investigate reports, and review important system
-events.
-
 ---
 
 # ⭐ Reviews
 
 Reviews are connected to completed marketplace transactions.
-<div align="center">
+
 ```text
 Order
   │
@@ -505,16 +468,15 @@ Buyer can submit review
   ├── Rating
   └── Comment
 ```
-</div>">
-This prevents arbitrary reviews and keeps the reputation system
-connected to actual marketplace transactions.
+
+This prevents arbitrary reviews and keeps the reputation system connected to actual marketplace transactions.
 
 ---
 
 # 🏗️ System Architecture
 
 AgriLink follows a service-oriented architecture.
-<div align="center">
+
 ```text
                          USERS
                            │
@@ -550,7 +512,7 @@ AgriLink follows a service-oriented architecture.
                              ▼
                       Nearby Farmers
 ```
-</div>
+
 ---
 
 # 🧰 Technology Stack
@@ -616,9 +578,8 @@ AgriLink follows a service-oriented architecture.
 
 # 🐳 Deployment Architecture
 
-AgriLink is designed to run on a self-hosted virtualized environment
-rather than depending on expensive cloud infrastructure.
-<div align="center">
+AgriLink is designed to run on a self-hosted virtualized environment rather than depending on expensive cloud infrastructure.
+
 ```text
 Physical Machine
        │
@@ -640,16 +601,15 @@ Physical Machine
               ├── Grafana
               └── Logging
 ```
-</div>
-The final number and distribution of VMs will depend on available
-hardware resources.
+
+The final number and distribution of VMs will depend on available hardware resources.
 
 ---
 
 # ⚙️ DevOps Architecture
 
 The infrastructure is intended to be reproducible and automated.
-<div align="center">
+
 ```text
                     GitHub
                        │
@@ -676,13 +636,12 @@ The infrastructure is intended to be reproducible and automated.
                        ▼
                    AgriLink
 ```
-</div>
+
 ---
 
 # 📊 Monitoring & Observability
 
-The production-style environment will include monitoring for both the
-application and infrastructure.
+The production-style environment will include monitoring for both the application and infrastructure.
 
 ## Infrastructure Metrics
 
@@ -703,7 +662,7 @@ application and infrastructure.
 * Database performance
 
 ## Visualization
-<div align="center">
+
 ```text
 Services
    │
@@ -718,7 +677,7 @@ Grafana
    ├── AI Dashboard
    └── Application Health
 ```
-</div>
+
 ---
 
 # 🛡️ Security
@@ -795,7 +754,7 @@ Testing will be integrated throughout the development lifecycle.
 ---
 
 # 📁 Project Structure
-<div align="center">
+
 ```text
 AgriLink/
 │
@@ -831,14 +790,10 @@ AgriLink/
 ├── SECURITY.md
 └── .gitignore
 ```
-</div>
+
 ---
 
 # 🚀 Development Roadmap
-
-AgriLink is developed incrementally, starting with the application,
-then introducing AI, disease sharing, DevOps, infrastructure,
-observability, and security.
 
 ## Phase 0 — Foundation
 
@@ -854,9 +809,9 @@ observability, and security.
 
 ---
 
-## Phase 1 — Finish Core Application & Authentication
+# Phase 1 — Finish Core Application & Authentication
 
-### Authentication
+## Authentication
 
 * [x] Registration
 * [x] Verification using code
@@ -868,7 +823,7 @@ observability, and security.
 * [ ] Refresh tokens
 * [ ] Role-based access control
 
-### Farmer Application
+## Farmer Application
 
 * [ ] Farmer dashboard
 * [ ] Farmer profile
@@ -880,7 +835,7 @@ observability, and security.
 * [ ] Notifications
 * [ ] Settings
 
-### Visitor / Normal User
+## Visitor / Normal User
 
 * [ ] Home page
 * [ ] Disease detection entry point
@@ -891,7 +846,7 @@ observability, and security.
 * [ ] Farmer details
 * [ ] Contact
 
-### Admin
+## Admin
 
 * [ ] Admin dashboard
 * [ ] User management
@@ -909,12 +864,11 @@ observability, and security.
 
 ---
 
-## Phase 2 — AI Disease Detection ⭐⭐⭐
+# Phase 2 — AI Disease Detection ⭐⭐⭐
 
-This phase comes **before the DevOps phase** because AI disease
-detection is one of the fundamental capabilities of AgriLink.
+This phase comes **before the DevOps phase** because AI disease detection is one of the fundamental capabilities of AgriLink.
 
-### Detection
+## Detection
 
 * [ ] Image upload
 * [ ] Image preview
@@ -931,7 +885,7 @@ detection is one of the fundamental capabilities of AgriLink.
 * [ ] Detection details
 * [ ] Delete detection
 
-### AI Service
+## AI Service
 
 * [ ] FastAPI service
 * [ ] TensorFlow model
@@ -947,14 +901,11 @@ detection is one of the fundamental capabilities of AgriLink.
 
 ---
 
-## Phase 3 — Disease Sharing & Early Warning ⭐⭐⭐⭐⭐
+# Phase 3 — Disease Sharing & Early Warning ⭐⭐⭐⭐⭐
 
 This is the **core differentiating feature of AgriLink**.
 
-The goal is to transform disease detection from an individual tool
-into a community-based early-warning system.
-
-### Disease Sharing
+## Disease Sharing
 
 * [ ] Share detection
 * [ ] Keep detection private
@@ -963,7 +914,7 @@ into a community-based early-warning system.
 * [ ] Geographic sharing radius
 * [ ] Privacy protection
 
-### Nearby Farmers
+## Nearby Farmers
 
 * [ ] Find nearby farmers
 * [ ] Geographic filtering
@@ -971,7 +922,7 @@ into a community-based early-warning system.
 * [ ] Distance filtering
 * [ ] Disease-aware filtering
 
-### Alerts
+## Alerts
 
 * [ ] Disease alert generation
 * [ ] Nearby farmer notifications
@@ -980,31 +931,13 @@ into a community-based early-warning system.
 * [ ] Crop-specific alerts
 * [ ] Alert severity
 
-### Core Workflow
-
-```text
-AI Detection
-     ↓
-Farmer Chooses to Share
-     ↓
-Geographic Processing
-     ↓
-Nearby Farmers Identified
-     ↓
-Disease Alert
-     ↓
-Notification
-     ↓
-Early Action
-```
-
 📄 [Disease Sharing Architecture](docs/ai/disease-sharing.md)
 📄 [Early Warning System](docs/ai/early-warning-system.md)
 📄 [Location & Privacy](docs/security/location-privacy.md)
 
 ---
 
-## Phase 4 — Farmer Network
+# Phase 4 — Farmer Network
 
 * [ ] Farmer list
 * [ ] Farmer cards
@@ -1021,9 +954,9 @@ Early Action
 
 ---
 
-## Phase 5 — Marketplace
+# Phase 5 — Marketplace
 
-### Products
+## Products
 
 * [ ] Product creation
 * [ ] Product details
@@ -1034,7 +967,7 @@ Early Action
 * [ ] Product categories
 * [ ] Product images
 
-### Orders
+## Orders
 
 * [ ] Create order
 * [ ] View orders
@@ -1044,7 +977,7 @@ Early Action
 * [ ] Update order status
 * [ ] Complete order
 
-### Reviews
+## Reviews
 
 * [ ] Review completed orders
 * [ ] Rating
@@ -1058,9 +991,9 @@ Early Action
 
 ---
 
-## Phase 6 — Communication & Agricultural Services
+# Phase 6 — Communication & Agricultural Services
 
-### Communication
+## Communication
 
 * [ ] Buyer ↔ Farmer chat
 * [ ] Farmer ↔ Farmer chat
@@ -1070,7 +1003,7 @@ Early Action
 * [ ] Notifications
 * [ ] Real-time messaging
 
-### Agricultural Services
+## Agricultural Services
 
 * [ ] Service creation
 * [ ] Service listing
@@ -1085,9 +1018,9 @@ Early Action
 
 ---
 
-## Phase 7 — Weather & Additional Services
+# Phase 7 — Weather & Additional Services
 
-### Weather
+## Weather
 
 * [ ] Current weather
 * [ ] Forecast
@@ -1097,7 +1030,7 @@ Early Action
 * [ ] Location-aware weather
 * [ ] Agricultural recommendations
 
-### Contact
+## Contact
 
 * [ ] Contact form
 * [ ] Admin contact management
@@ -1108,7 +1041,7 @@ Early Action
 
 ---
 
-## Phase 8 — Administration
+# Phase 8 — Administration
 
 * [ ] Admin dashboard
 * [ ] User management
@@ -1128,9 +1061,9 @@ Early Action
 
 ---
 
-## Phase 9 — Testing & Quality
+# Phase 9 — Testing & Quality
 
-### Backend
+## Backend
 
 * [ ] Unit tests
 * [ ] Service tests
@@ -1139,14 +1072,14 @@ Early Action
 * [ ] Integration tests
 * [ ] Security tests
 
-### Frontend
+## Frontend
 
 * [ ] Component tests
 * [ ] Form tests
 * [ ] Authentication tests
 * [ ] E2E tests
 
-### AI
+## AI
 
 * [ ] API tests
 * [ ] Image validation tests
@@ -1154,25 +1087,19 @@ Early Action
 * [ ] Model evaluation
 * [ ] Error handling
 
-### Infrastructure
+## Infrastructure
 
 * [ ] Docker health checks
 * [ ] Deployment verification
 * [ ] Ansible idempotency tests
 
 📄 [Testing Strategy](docs/testing/README.md)
-📄 [Backend Testing](docs/testing/backend.md)
-📄 [Frontend Testing](docs/testing/frontend.md)
-📄 [AI Testing](docs/testing/ai.md)
 
 ---
 
-## Phase 10 — DevOps & Infrastructure
+# Phase 10 — DevOps & Infrastructure
 
-AgriLink will then be transformed from a locally developed application
-into a reproducible, automated deployment.
-
-### Containerization
+## Containerization
 
 * [ ] Dockerfiles
 * [ ] Frontend container
@@ -1184,7 +1111,7 @@ into a reproducible, automated deployment.
 * [ ] Container networking
 * [ ] Volumes
 
-### Local Infrastructure
+## Local Infrastructure
 
 * [ ] VirtualBox VMs
 * [ ] Linux server configuration
@@ -1193,7 +1120,7 @@ into a reproducible, automated deployment.
 * [ ] `AgriLink.local`
 * [ ] Firewall
 
-### Automation
+## Automation
 
 * [ ] Ansible inventory
 * [ ] Ansible roles
@@ -1211,33 +1138,7 @@ into a reproducible, automated deployment.
 
 ---
 
-## Phase 11 — CI/CD
-
-GitHub Actions will automate the software delivery pipeline.
-
-```text
-Git Push
-   ↓
-GitHub Actions
-   ↓
-Lint
-   ↓
-Unit Tests
-   ↓
-Integration Tests
-   ↓
-Security Scanning
-   ↓
-Docker Build
-   ↓
-Docker Image Validation
-   ↓
-Deployment
-   ↓
-Health Check
-```
-
-Planned capabilities:
+# Phase 11 — CI/CD
 
 * [ ] CI pipeline
 * [ ] Frontend testing
@@ -1248,13 +1149,27 @@ Planned capabilities:
 * [ ] Deployment automation
 * [ ] Deployment verification
 
+```text
+Git Push
+   ↓
+GitHub Actions
+   ↓
+Lint → Test → Security Scan
+   ↓
+Docker Build
+   ↓
+Deploy
+   ↓
+Health Check
+```
+
 📄 [CI/CD Documentation](docs/deployment/ci-cd.md)
 
 ---
 
-## Phase 12 — Monitoring & Logging
+# Phase 12 — Monitoring & Logging
 
-### Monitoring
+## Monitoring
 
 * [ ] Prometheus
 * [ ] Node metrics
@@ -1264,7 +1179,7 @@ Planned capabilities:
 * [ ] Database metrics
 * [ ] Application health
 
-### Visualization
+## Visualization
 
 * [ ] Grafana
 * [ ] Infrastructure dashboard
@@ -1272,7 +1187,7 @@ Planned capabilities:
 * [ ] AI dashboard
 * [ ] Application dashboard
 
-### Logging
+## Logging
 
 * [ ] Application logs
 * [ ] Nginx logs
@@ -1288,12 +1203,9 @@ Planned capabilities:
 
 ---
 
-## Phase 13 — Security & DevSecOps
+# Phase 13 — Security & DevSecOps
 
-Security will be integrated into the final infrastructure and CI/CD
-pipeline.
-
-### Application Security
+## Application Security
 
 * [ ] Authentication hardening
 * [ ] Authorization review
@@ -1303,7 +1215,7 @@ pipeline.
 * [ ] Rate limiting
 * [ ] Security headers
 
-### Infrastructure Security
+## Infrastructure Security
 
 * [ ] HTTPS/TLS
 * [ ] Firewall
@@ -1313,7 +1225,7 @@ pipeline.
 * [ ] Container security
 * [ ] Least privilege
 
-### DevSecOps
+## DevSecOps
 
 * [ ] Dependency scanning
 * [ ] Secret scanning
@@ -1349,16 +1261,11 @@ Documentation
 Git Commit
 ```
 
-Documentation should not be something added at the end of the project.
-
-Each major feature should have its technical documentation created
-alongside its implementation.
+Documentation should be created alongside implementation rather than being postponed until the end of the project.
 
 ---
 
 # 📚 Documentation
-
-AgriLink documentation is organized by technical domain.
 
 ## 🏗️ Architecture
 
@@ -1429,9 +1336,8 @@ AgriLink documentation is organized by technical domain.
 
 # 🎓 Portfolio Objectives
 
-AgriLink is designed as a full-stack engineering, AI, cybersecurity,
-DevOps, and infrastructure project demonstrating experience across:
-<div align="center">
+AgriLink is designed as a full-stack engineering, AI, cybersecurity, DevOps, and infrastructure project demonstrating experience across:
+
 ```text
                     AGRILINK
                        │
@@ -1455,9 +1361,8 @@ DevOps, and infrastructure project demonstrating experience across:
        └── VMs         ├── Auditing     └── Logging
                        └── DevSecOps
 ```
-</div>
-The objective is not simply to create a web application, but to
-demonstrate the ability to:
+
+The objective is not simply to create a web application, but to demonstrate the ability to:
 
 * Design a complete software system
 * Develop a modern full-stack application
@@ -1498,8 +1403,7 @@ Potential future improvements include:
 
 AgriLink is currently under active development.
 
-Features listed in the roadmap are implemented progressively and may
-not all be available in the current version.
+Features listed in the roadmap are implemented progressively and may not all be available in the current version.
 
 ---
 
@@ -1521,10 +1425,6 @@ AgriLink is developed as a portfolio project combining:
 
 # ⭐ Vision
 
-> **AgriLink connects farmers, intelligence, and information to help
-> protect crops before problems become outbreaks.**
+> **AgriLink connects farmers, intelligence, and information to help protect crops before problems become outbreaks.**
 
 ### Detect. Share. Warn. Protect.
-
-```
-```
