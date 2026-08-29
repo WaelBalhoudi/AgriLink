@@ -19,34 +19,17 @@
 
 ### Smart Agriculture Platform for AI-Powered Crop Disease Detection, Farmer Collaboration & Agricultural Commerce
 
-<<<<<<< HEAD
-**Detect. Share. Warn. Protect.**
-
-<img src="docs/images/agrilink-banner.png" alt="AgriLink" width="100%">
-
----
-
-AgriLink is a smart agriculture platform designed to help farmers
-**detect crop diseases using artificial intelligence, share disease
-detections with nearby farmers, receive early warnings, and participate
-in a connected agricultural marketplace.**
-=======
 AgriLink is a smart agriculture platform designed to help farmers **detect crop diseases using artificial intelligence, share disease detections with nearby farmers, receive early warnings, and participate in a connected agricultural marketplace.**
->>>>>>> 548805a68ec0f193fd834d737611b278b01914ec
 
 The core idea is:
 
 **Detect. Share. Warn. Protect.**
 
 <img src="docs/images/agrilink-banner.png" alt="AgriLink - Smart Agriculture Platform" width="100%">
+
 ---
 
 ## 📖 Table of Contents
-
-<<<<<<< HEAD
----
-
-## 📑 Table of Contents
 
 - [🎯 Project Vision](#project-vision)
 - [🚨 Core Concept](#core-concept)
@@ -79,33 +62,9 @@ The core idea is:
 - [👨‍💻 Author](#author)
 - [⭐ Vision](#vision)
 
-------------------------------------------------------------------------
+---
 
 <a id="project-vision"></a>
-# 🎯 Project Vision
-=======
-* [🎯 Project Vision](#-project-vision)
-* [🚨 Core Concept](#-core-concept)
-* [✨ Key Features](#-key-features)
-* [🏗️ System Architecture](#️-system-architecture)
-* [🧰 Technology Stack](#-technology-stack)
-* [🐳 Deployment Architecture](#-deployment-architecture)
-* [⚙️ DevOps Architecture](#️-devops-architecture)
-* [📊 Monitoring & Observability](#-monitoring--observability)
-* [🛡️ Security](#️-security)
-* [🧪 Testing Strategy](#-testing-strategy)
-* [📁 Project Structure](#-project-structure)
-* [🚀 Development Roadmap](#-development-roadmap)
-* [🧭 Development Philosophy](#-development-philosophy)
-* [📚 Documentation](#-documentation)
-* [🎓 Portfolio Objectives](#-portfolio-objectives)
-* [🌱 Future Vision](#-future-vision)
-* [📌 Project Status](#-project-status)
-* [👨‍💻 Author](#-author)
-
----
->>>>>>> 548805a68ec0f193fd834d737611b278b01914ec
-
 # 🎯 Project Vision
 
 Agricultural diseases can spread rapidly while farmers may have limited access to early information about outbreaks in their surrounding areas.
@@ -228,12 +187,8 @@ Planned capabilities:
 
 ---
 
-<<<<<<< HEAD
 <a id="disease-sharing--early-warning"></a>
 ## 📢 Disease Sharing & Early Warning
-=======
-# 📢 Disease Sharing & Early Warning
->>>>>>> 548805a68ec0f193fd834d737611b278b01914ec
 
 This is the **core differentiating feature of AgriLink**.
 
@@ -975,7 +930,7 @@ This phase comes **before the DevOps phase** because AI disease detection is one
 * [x] Output validation
 * [x] Error handling
 * [x] Model evaluation
-* [] Improve AI model 
+* [ ] Improve AI model
 
 📄 [AI Architecture](docs/ai/architecture.md)
 📄 [AI Model Documentation](docs/ai/model.md)
@@ -1351,25 +1306,6 @@ Documentation should be created alongside implementation rather than being postp
 <a id="documentation"></a>
 # 📚 Documentation
 
-<<<<<<< HEAD
-Detailed documentation will be maintained under `/docs`. Links below
-point to the planned file locations — create these files as each area
-matures.
-
--   [System Architecture](docs/architecture/system-architecture.md)
--   [Database Architecture](docs/architecture/database-architecture.md)
--   [API Documentation](docs/api/api-documentation.md)
--   [AI Model Documentation](docs/ai/ai-model-documentation.md)
--   [Disease Detection Architecture](docs/ai/disease-detection-architecture.md)
--   [Disease Alert Architecture](docs/architecture/disease-alert-architecture.md)
--   [Security Documentation](docs/security/security-documentation.md)
--   [Docker Documentation](docs/deployment/docker-documentation.md)
--   [Ansible Documentation](docs/deployment/ansible-documentation.md)
--   [CI/CD Documentation](docs/deployment/ci-cd-documentation.md)
--   [Deployment Guide](docs/deployment/deployment-guide.md)
--   [Monitoring Guide](docs/monitoring/monitoring-guide.md)
--   [Testing Strategy](docs/testing/testing-strategy.md)
-=======
 ## 🏗️ Architecture
 
 * [System Architecture](docs/architecture/README.md)
@@ -1377,7 +1313,6 @@ matures.
 * [Database Architecture](docs/database/README.md)
 
 ## 🔌 API
->>>>>>> 548805a68ec0f193fd834d737611b278b01914ec
 
 * [API Documentation](docs/api/README.md)
 * [API Endpoints](docs/api/endpoints.md)
