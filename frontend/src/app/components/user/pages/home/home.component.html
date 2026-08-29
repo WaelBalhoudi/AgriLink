@@ -19,7 +19,7 @@
               Detect Plant Disease
             </button>
 
-            <input 
+           <input 
               type="file"
               #fileInput
               accept="image/*"
@@ -27,6 +27,8 @@
               (change)="onFileSelected($event)"
               hidden
             />
+
+            
 
             <a routerLink="/marketplace" class="btn-form">
               Explore Marketplace
@@ -38,6 +40,690 @@
       </div>
     </div>
   </div>
+
+
+      <!-- detection  Modal -->
+  <div class="modal fade" id="detectionModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="detectionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header  mt-3 ">
+          <h4 class="mb-"><i class="fa-solid fa-leaf"></i> Detect Plant Disease</h4>
+
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        
+        <div class="modal-body mt-3">
+          <!-- =========================================================
+              Image Preview
+          ========================================================= -->
+
+          <div class="text-center mb-3">
+
+            <div class="image-preview-container">
+
+              <img
+                *ngIf="imagePreview"
+                [src]="imagePreview"
+                [alt]="selectedFile?.name || 'Selected plant image'"
+                class="img-fluid rounded"
+              />
+
+
+              <div
+                *ngIf="!imagePreview"
+                class="placeholder-image">
+
+                <i
+                  class="fa-solid fa-image fa-3x text-muted">
+                </i>
+
+                <p class="text-muted mt-2">
+                  No image selected
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <!-- File information -->
+
+            <div
+              *ngIf="selectedFile"
+              class="mt-2 d-flex align-items-center justify-content-center g-2">
+
+              <p class="mb-1 fw-bold">
+
+                {{ selectedFile.name }}
+
+              </p>
+
+
+              <p class="text-muted small mb-0">
+
+                {{ getFileSize() }}
+
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="mb-2">
+            <label for="cropSelect" class="form-label fw-bold">
+              Crop <span class="text-danger">*</span>
+            </label>
+            <select class="form-select" id="cropSelect" [(ngModel)]="selectedCrop" required>
+              <option value="" disabled>Select crop</option>
+              <option *ngFor="let crop of crops" [value]="crop.value">
+                {{ crop.name }}
+              </option>
+            </select>
+          </div>
+
+          <!-- =========================================================
+              Detection Location
+          ========================================================== -->
+
+          <div class="mb-2">
+
+            <label
+              for="detectionLocation"
+              class="form-label fw-bold">
+
+              <i class="fa-solid fa-location-dot"></i>
+              Detection Location
+
+            </label>
+
+
+            <div class="input-group">
+
+              <!-- Location input -->
+
+              <input
+                type="text"
+                id="detectionLocation"
+                class="form-control"
+                placeholder="Click to select detection location"
+                readonly
+                [value]="selectedAddress"
+                (click)="openLocationModal()"
+                data-bs-toggle="modal"
+                data-bs-target="#detectionLocationMapModal"
+                style="
+                  cursor: pointer;
+                  background-color: #f8f9fa;
+                "
+              />
+
+
+              <!-- Map button -->
+
+              <button
+                type="button"
+                class="input-group-text"
+                (click)="openLocationModal()"
+                style="cursor: pointer;">
+
+                <i class="fa-solid fa-map-location-dot"></i>
+
+              </button>
+
+            </div>
+
+
+            <!-- Location information -->
+
+            <div
+              class="mt-2"
+              *ngIf="selectedLat !== null && selectedLng !== null">
+
+              <small class="text-muted d-block">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <strong>Address:</strong>
+
+                {{ selectedAddress }}
+
+              </small>
+
+
+              <small class="text-muted d-block">
+
+                <i class="fa-solid fa-location-crosshairs"></i>
+
+                <strong>Coordinates:</strong>
+
+                {{ selectedCoordinates }}
+
+              </small>
+
+            </div>
+
+          </div>
+ 
+        </div>
+
+        <div class="modal-footer mt-0">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onCancel()">
+            Cancel
+          </button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="onAnalyze()" 
+                  [disabled]="!selectedCrop || !selectedFile">
+            <i class="fa-solid fa-magnifying-glass"></i> Analyze Image
+          </button>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+
+      <!-- detection Location  Modal -->
+
+  <div class="modal fade" id="detectionLocationMapModal" tabindex="-1" 
+     [class.show]="showLocationModal" 
+     [style.display]="showLocationModal ? 'block' : 'none'"
+     aria-labelledby="detectionLocationMapModalLabel" 
+     aria-hidden="!showLocationModal">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="fa-solid fa-map"></i> Select Farm Location
+        </h5>
+        <button type="button" class="btn-close" (click)="closeLocationModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0">
+        <div id="detectionFarmLocationMap" style="height: 500px; width: 100%;"></div>
+        
+        <div class="p-3 bg-light border-top">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <p class="mb-1">
+                <strong> Selected Location:</strong> 
+                <span class="text-primary">{{ selectedAddress || 'Click on the map to select' }}</span>
+              </p>
+              <p class="mb-0 text-muted small">
+                <i class="fa-solid fa-map-pin"></i> 
+                Lat: {{ selectedLat ? (selectedLat | number:'1.4-4') : '-' }}, 
+                Lng: {{ selectedLng ? (selectedLng | number:'1.4-4') : '-' }}
+              </p>
+            </div>
+            <div class="col-md-4 text-end">
+              <button class="btn btn-outline-secondary me-2" (click)="closeLocationModal()">
+                Cancel
+              </button>
+              <button class="btn btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#detectionModal"
+                      (click)="confirmLocation()" 
+                      [disabled]="!selectedLat || !selectedLng">
+                      
+                <i class="fa-solid fa-check"></i> Confirm Location
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+   <!-- =========================================================
+     Detection Result Modal
+    ========================================================== -->
+
+  <div
+    class="modal fade"
+    id="detectionResultModal"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="detectionResultModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+
+      <div class="modal-content">
+
+
+        <!-- =====================================================
+            Header
+        ====================================================== -->
+      
+        
+        <div class="modal-header mt-3">
+
+          <div>
+
+            <h4 class="modal-title ">
+
+              <i class="fa-solid fa-leaf text-success me-2"></i>
+
+              AI Disease Detection Result
+
+            </h4>
+
+            <small class="text-muted">
+              AgriLink Plant Health Analysis
+            </small>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close">
+          </button>
+
+        </div>
+
+
+
+        <!-- =====================================================
+            Body
+        ====================================================== -->
+
+        <div class="modal-body p-4 mt-4">
+
+          <div
+            *ngIf="detectionResult"
+            class="container-fluid">
+
+            <div class="row g-4">
+
+
+              <!-- =================================================
+                  LEFT — Image
+              ================================================== -->
+
+              <div class="col-lg-5">
+
+                <div class="card border-0 shadow-sm h-100">
+
+                  <div class="card-body">
+
+                    <div class="text-center">
+
+                      <div
+                        class="position-relative
+                              bg-light
+                              rounded
+                              overflow-hidden
+                              mb-3">
+
+                        <img
+                          *ngIf="detectionResultImage"
+                          [src]="detectionResultImage"
+                          alt="Uploaded plant image"
+                          class="img-fluid w-100"
+                          style="
+                            max-height: 420px;
+                            object-fit: contain;
+                          ">
+
+                      </div>
+
+                      <div class="d-flex align-items-center justify-content-center">
+                         <small class="text-muted">
+
+                        Uploaded image
+
+                      </small>
+                      <h6 class="fw-bold mb-1">
+
+                        {{ detectionResult.plant | titlecase }}
+
+                      </h6>
+                      </div>
+
+                     
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+              <!-- =================================================
+                  RIGHT — Result
+              ================================================== -->
+
+              <div class="col-lg-7">
+
+                <!-- Disease -->
+                <div
+                  class="card
+                        border-0
+                        shadow-sm
+                        mb-3">
+
+                  <div class="card-body">
+
+                    <div class="d-flex
+                                justify-content-between
+                                align-items-start">
+
+                      <div>
+
+                        <small
+                          class="text-muted
+                                text-uppercase
+                                fw-bold">
+
+                          Detected Disease
+
+                        </small>
+
+                        <h2 class="fw-bold mt-1 mb-0">
+
+                          {{ detectionResult.disease }}
+
+                        </h2>
+
+                      </div>
+
+
+                      <!-- Severity -->
+                      <span
+                        class="badge rounded-pill px-3 py-2"
+                        [ngClass]="{
+                          'bg-success':
+                            detectionResult.severity === 'low',
+
+                          'bg-warning text-dark':
+                            detectionResult.severity === 'medium',
+
+                          'bg-danger':
+                            detectionResult.severity === 'high'
+                        }">
+
+                        {{ detectionResult.severity | titlecase }}
+
+                      </span>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+
+                <!-- Confidence -->
+                <div
+                  class="card
+                        border-0
+                        shadow-sm
+                        mb-3">
+
+                  <div class="card-body">
+
+                    <div
+                      class="d-flex
+                            justify-content-between
+                            mb-2">
+
+                      <span class="fw-bold">
+
+                        AI Confidence
+
+                      </span>
+
+                      <span class="fw-bold text-success">
+
+                        {{ detectionResult.confidence * 100 | number:'1.0-0' }}%
+
+                      </span>
+
+                    </div>
+
+
+                    <div
+                      class="progress"
+                      style="height: 10px;">
+
+                      <div
+                        class="progress-bar bg-success"
+                        role="progressbar"
+                        [style.width.%]="
+                          detectionResult.confidence * 100
+                        "
+                        [attr.aria-valuenow]="
+                          detectionResult.confidence * 100
+                        "
+                        aria-valuemin="0"
+                        aria-valuemax="100">
+
+                      </div>
+
+                    </div>
+
+                    <small class="text-muted">
+
+                      Confidence returned by the AgriLink AI service.
+
+                    </small>
+
+                  </div>
+
+                </div>
+
+
+
+                <!-- Location -->
+                <div
+                  class="card
+                        border-0
+                        shadow-sm
+                        mb-3">
+
+                  <div class="card-body">
+
+                    <h6 class="fw-bold">
+
+                      <i
+                        class="fa-solid
+                              fa-location-dot
+                              text-danger
+                              me-2">
+                      </i>
+
+                      Detection Location
+
+                    </h6>
+
+                    <p class="mb-0 text-muted">
+
+                      {{ detectionResult.location }}
+
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                Treatment + Prevention
+            ================================================== -->
+
+            <div class="row g-4 mt-1">
+
+
+              <!-- Treatment -->
+              <div class="col-md-6">
+
+                <div
+                  class="card
+                        border-0
+                        shadow-sm
+                        h-100">
+
+                  <div class="card-body">
+
+                    <h5 class="fw-bold">
+
+                      <i
+                        class="fa-solid
+                              fa-kit-medical
+                              text-danger
+                              me-2">
+                      </i>
+
+                      Recommended Treatment
+
+                    </h5>
+
+
+                    <ul class="list-group list-group-flush mt-3">
+
+                      <li
+                        *ngFor="
+                          let treatment
+                          of detectionResult.treatment
+                        "
+                        class="list-group-item
+                              px-0
+                              border-0">
+
+                        <i
+                          class="fa-solid
+                                fa-circle-check
+                                text-success
+                                me-2">
+                        </i>
+
+                        {{ treatment }}
+
+                      </li>
+
+                    </ul>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+              <!-- Prevention -->
+              <div class="col-md-6">
+
+                <div
+                  class="card
+                        border-0
+                        shadow-sm
+                        h-100">
+
+                  <div class="card-body">
+
+                    <h5 class="fw-bold">
+
+                      <i
+                        class="fa-solid
+                              fa-shield-heart
+                              text-success
+                              me-2">
+                      </i>
+
+                      Prevention
+
+                    </h5>
+
+
+                    <ul class="list-group list-group-flush mt-3">
+
+                      <li
+                        *ngFor="
+                          let prevention
+                          of detectionResult.prevention
+                        "
+                        class="list-group-item
+                              px-0
+                              border-0">
+
+                        <i
+                          class="fa-solid
+                                fa-check
+                                text-success
+                                me-2">
+                        </i>
+
+                        {{ prevention }}
+
+                      </li>
+
+                    </ul>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+         
+          </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+            Footer
+        ====================================================== -->
+
+        <div class="modal-footer">
+
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            data-bs-dismiss="modal">
+
+            Close
+
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-success">
+
+            <i
+              class="fa-solid
+                    fa-clock-rotate-left
+                    me-1">
+            </i>
+
+            View Detection History
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>    
 
   <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
 

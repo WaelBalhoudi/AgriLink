@@ -1,5 +1,3 @@
-<div align="center">
-
 ![Angular](https://img.shields.io/badge/Angular-Frontend-DD0031?logo=angular&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Programming_Language-3178C6?logo=typescript&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-Backend-6DB33F?logo=springboot&logoColor=white)
@@ -23,8 +21,6 @@
 
 <img src="docs/images/agrilink-banner.png" alt="AgriLink" width="100%">
 
-</div>
-
 ---
 
 AgriLink is a smart agriculture platform designed to help farmers
@@ -46,9 +42,45 @@ Alongside disease detection, AgriLink provides a marketplace, farmer
 discovery, agricultural services, communication, weather information,
 and administrative management.
 
+---
+
+## 📑 Table of Contents
+
+- [🎯 Project Vision](#project-vision)
+- [🚨 Core Concept](#core-concept)
+- [✨ Key Features](#key-features)
+  - [🤖 AI Plant Disease Detection](#ai-plant-disease-detection)
+  - [📢 Disease Sharing & Early Warning](#disease-sharing--early-warning)
+- [🌾 Farmer Management](#farmer-management)
+- [🛒 Agricultural Marketplace](#agricultural-marketplace)
+- [🗺️ Farmer Discovery](#farmer-discovery)
+- [💬 Communication](#communication)
+- [🛠️ Agricultural Services](#agricultural-services)
+- [🌦️ Weather](#weather)
+- [🔐 Authentication & Authorization](#authentication--authorization)
+- [👨‍💼 Administration](#administration)
+- [⭐ Reviews](#reviews)
+- [🏗️ System Architecture](#system-architecture)
+- [🧰 Technology Stack](#technology-stack)
+- [🐳 Deployment Architecture](#deployment-architecture)
+- [⚙️ DevOps Architecture](#devops-architecture)
+- [📊 Monitoring & Observability](#monitoring--observability)
+- [🛡️ Security](#security)
+- [🧪 Testing Strategy](#testing-strategy)
+- [📁 Project Structure](#project-structure)
+- [🚀 Development Roadmap](#development-roadmap)
+- [🧭 Development Philosophy](#development-philosophy)
+- [📚 Documentation](#documentation)
+- [🎓 Portfolio Objectives](#portfolio-objectives)
+- [🌱 Future Vision](#future-vision)
+- [📌 Project Status](#project-status)
+- [👨‍💻 Author](#author)
+- [⭐ Vision](#vision)
+
 ------------------------------------------------------------------------
 
-## 🎯 Project Vision
+<a id="project-vision"></a>
+# 🎯 Project Vision
 
 Agricultural diseases can spread rapidly while farmers may have limited
 access to early information about outbreaks in their surrounding areas.
@@ -71,6 +103,7 @@ into a **community-based agricultural early-warning system**.
 
 ------------------------------------------------------------------------
 
+<a id="core-concept"></a>
 # 🚨 Core Concept
 
 The most important workflow in AgriLink is the disease detection and
@@ -109,8 +142,10 @@ sharing system.
 
 ------------------------------------------------------------------------
 
+<a id="key-features"></a>
 # ✨ Key Features
 
+<a id="ai-plant-disease-detection"></a>
 ## 🤖 AI Plant Disease Detection
 
 Farmers can submit crop images for AI-powered analysis.
@@ -147,6 +182,7 @@ Planned capabilities:
 
 ------------------------------------------------------------------------
 
+<a id="disease-sharing--early-warning"></a>
 ## 📢 Disease Sharing & Early Warning
 
 This is the **core social/agricultural feature** of AgriLink.
@@ -191,6 +227,7 @@ farmer is not unnecessarily exposed**.
 
 ------------------------------------------------------------------------
 
+<a id="farmer-management"></a>
 # 🌾 Farmer Management
 
 Farmers have their own workspace for managing agricultural activities.
@@ -237,6 +274,7 @@ Crop information can include:
 
 ------------------------------------------------------------------------
 
+<a id="agricultural-marketplace"></a>
 # 🛒 Agricultural Marketplace
 
 AgriLink provides a marketplace where farmers can offer agricultural
@@ -289,6 +327,7 @@ COMPLETED
 
 ------------------------------------------------------------------------
 
+<a id="farmer-discovery"></a>
 # 🗺️ Farmer Discovery
 
 Farmers can discover other farmers through both list and map-based
@@ -320,6 +359,7 @@ This geographic functionality also supports the disease-sharing system.
 
 ------------------------------------------------------------------------
 
+<a id="communication"></a>
 # 💬 Communication
 
 AgriLink will provide direct communication between platform users.
@@ -344,6 +384,7 @@ conversations.
 
 ------------------------------------------------------------------------
 
+<a id="agricultural-services"></a>
 # 🛠️ Agricultural Services
 
 Farmers can offer agricultural services through the platform.
@@ -369,6 +410,7 @@ A service can contain:
 
 ------------------------------------------------------------------------
 
+<a id="weather"></a>
 # 🌦️ Weather
 
 AgriLink will provide location-aware weather information with an
@@ -388,6 +430,7 @@ environmental conditions with agricultural decision-making.
 
 ------------------------------------------------------------------------
 
+<a id="authentication--authorization"></a>
 # 🔐 Authentication & Authorization
 
 AgriLink uses role-based authentication and authorization.
@@ -417,6 +460,7 @@ Authentication includes:
 
 ------------------------------------------------------------------------
 
+<a id="administration"></a>
 # 👨‍💼 Administration
 
 Administrators will have access to a dedicated management platform.
@@ -443,6 +487,7 @@ events.
 
 ------------------------------------------------------------------------
 
+<a id="reviews"></a>
 # ⭐ Reviews
 
 Reviews are connected to completed transactions.
@@ -465,6 +510,7 @@ connected to actual marketplace transactions.
 
 ------------------------------------------------------------------------
 
+<a id="system-architecture"></a>
 # 🏗️ System Architecture
 
 AgriLink follows a service-oriented architecture.
@@ -507,6 +553,7 @@ AgriLink follows a service-oriented architecture.
 
 ------------------------------------------------------------------------
 
+<a id="technology-stack"></a>
 # 🧰 Technology Stack
 
 ## Frontend
@@ -568,6 +615,7 @@ AgriLink follows a service-oriented architecture.
 
 ------------------------------------------------------------------------
 
+<a id="deployment-architecture"></a>
 # 🐳 Deployment Architecture
 
 AgriLink is designed to run on a self-hosted virtualized environment
@@ -599,6 +647,7 @@ The final number of VMs will depend on available hardware resources.
 
 ------------------------------------------------------------------------
 
+<a id="devops-architecture"></a>
 # ⚙️ DevOps Architecture
 
 The infrastructure is intended to be reproducible and automated.
@@ -632,6 +681,7 @@ The infrastructure is intended to be reproducible and automated.
 
 ------------------------------------------------------------------------
 
+<a id="monitoring--observability"></a>
 # 📊 Monitoring & Observability
 
 The production-style environment will include monitoring for both the
@@ -674,6 +724,7 @@ Grafana
 
 ------------------------------------------------------------------------
 
+<a id="security"></a>
 # 🛡️ Security
 
 Security is a major component of AgriLink's architecture.
@@ -711,6 +762,7 @@ Security is a major component of AgriLink's architecture.
 
 ------------------------------------------------------------------------
 
+<a id="testing-strategy"></a>
 # 🧪 Testing Strategy
 
 Testing will be integrated throughout the development lifecycle.
@@ -747,6 +799,7 @@ Testing will be integrated throughout the development lifecycle.
 
 ------------------------------------------------------------------------
 
+<a id="project-structure"></a>
 # 📁 Project Structure
 
 ``` text
@@ -785,6 +838,7 @@ AgriLink/
 
 ------------------------------------------------------------------------
 
+<a id="development-roadmap"></a>
 # 🚀 Development Roadmap
 
 ## Phase 0 --- Foundation
@@ -921,6 +975,7 @@ AgriLink/
 
 ------------------------------------------------------------------------
 
+<a id="development-philosophy"></a>
 # 🧭 Development Philosophy
 
 Each major feature should follow:
@@ -944,28 +999,30 @@ the end of development.
 
 ------------------------------------------------------------------------
 
+<a id="documentation"></a>
 # 📚 Documentation
 
-Detailed documentation will be maintained under `/docs`.
+Detailed documentation will be maintained under `/docs`. Links below
+point to the planned file locations — create these files as each area
+matures.
 
-Planned documentation:
-
--   System Architecture
--   Database Architecture
--   API Documentation
--   AI Model Documentation
--   Disease Detection Architecture
--   Disease Alert Architecture
--   Security Documentation
--   Docker Documentation
--   Ansible Documentation
--   CI/CD Documentation
--   Deployment Guide
--   Monitoring Guide
--   Testing Strategy
+-   [System Architecture](docs/architecture/system-architecture.md)
+-   [Database Architecture](docs/architecture/database-architecture.md)
+-   [API Documentation](docs/api/api-documentation.md)
+-   [AI Model Documentation](docs/ai/ai-model-documentation.md)
+-   [Disease Detection Architecture](docs/ai/disease-detection-architecture.md)
+-   [Disease Alert Architecture](docs/architecture/disease-alert-architecture.md)
+-   [Security Documentation](docs/security/security-documentation.md)
+-   [Docker Documentation](docs/deployment/docker-documentation.md)
+-   [Ansible Documentation](docs/deployment/ansible-documentation.md)
+-   [CI/CD Documentation](docs/deployment/ci-cd-documentation.md)
+-   [Deployment Guide](docs/deployment/deployment-guide.md)
+-   [Monitoring Guide](docs/monitoring/monitoring-guide.md)
+-   [Testing Strategy](docs/testing/testing-strategy.md)
 
 ------------------------------------------------------------------------
 
+<a id="portfolio-objectives"></a>
 # 🎓 Portfolio Objectives
 
 AgriLink is designed as a full-stack engineering, AI, cybersecurity, and
@@ -1001,6 +1058,7 @@ automate, and monitor a complete software system.**
 
 ------------------------------------------------------------------------
 
+<a id="future-vision"></a>
 # 🌱 Future Vision
 
 Potential future improvements include:
@@ -1019,6 +1077,7 @@ Potential future improvements include:
 
 ------------------------------------------------------------------------
 
+<a id="project-status"></a>
 # 📌 Project Status
 
 **🚧 Active Development**
@@ -1029,6 +1088,7 @@ the current version.
 
 ------------------------------------------------------------------------
 
+<a id="author"></a>
 # 👨‍💻 Author
 
 **Wael Balhoudi**
@@ -1045,6 +1105,7 @@ AgriLink is developed as a portfolio project combining:
 
 ------------------------------------------------------------------------
 
+<a id="vision"></a>
 # ⭐ Vision
 
 > **AgriLink connects farmers, intelligence, and information to help

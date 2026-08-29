@@ -635,3 +635,7 @@ p,ul,li{
   visibility: visible;
   opacity: 1;
 }
+
+.card{
+  border: 1px solid #74f69b;
+}

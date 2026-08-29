@@ -54,6 +54,8 @@ public class BeansConfig {
                 "http://localhost:4200",              // Angular local dev
                 "http://localhost:4201",              // Angular local dev
                 "http://localhost:4202",
+                "http://10.119.130.241:4200",
+                "http://0.0.0.0:4200",
                 "https://agri-link-omega.vercel.app//"
         ));
 

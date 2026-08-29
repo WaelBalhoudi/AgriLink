@@ -21,7 +21,9 @@ public class PlantDiseaseController {
             @RequestParam("image") MultipartFile image,
             @RequestParam("data") String jsonData
     ) throws JsonProcessingException {
+
         ObjectMapper mapper = new ObjectMapper();
+        System.out.println(jsonData);
         DiseaseRequest request = mapper.readValue(jsonData, DiseaseRequest.class);
 
         System.out.println("=================");
