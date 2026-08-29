@@ -899,10 +899,10 @@ AgriLink/
 * [x] Account activation
 * [x] Location registration
 * [x] Login
-* [ ] Fix authentication issues
-* [ ] JWT implementation/review
+* [x] Fix authentication issues
+* [x] JWT implementation/review
 * [ ] Refresh tokens
-* [ ] Role-based access control
+* [x] Role-based access control
 
 ## Farmer Application
 
@@ -918,8 +918,8 @@ AgriLink/
 
 ## Visitor / Normal User
 
-* [ ] Home page
-* [ ] Disease detection entry point
+* [x] Home page
+* [x] Disease detection entry point
 * [ ] Marketplace
 * [ ] Product details
 * [ ] Farmer list
@@ -951,30 +951,31 @@ This phase comes **before the DevOps phase** because AI disease detection is one
 
 ## Detection
 
-* [ ] Image upload
-* [ ] Image preview
-* [ ] Image validation
-* [ ] Crop selection
-* [ ] AI API
-* [ ] Disease prediction
-* [ ] Confidence score
-* [ ] Disease information
-* [ ] Symptoms
-* [ ] Recommendations
-* [ ] Detection result page
+* [x] Image upload
+* [x] Image preview
+* [x] Image validation
+* [x] Crop selection
+* [x] AI API
+* [x] Disease prediction
+* [x] Confidence score
+* [x] Disease information
+* [x] Symptoms
+* [x] Recommendations
+* [x] Detection result page
 * [ ] Detection history
 * [ ] Detection details
 * [ ] Delete detection
 
 ## AI Service
 
-* [ ] FastAPI service
-* [ ] TensorFlow model
-* [ ] Model inference pipeline
-* [ ] Input preprocessing
-* [ ] Output validation
-* [ ] Error handling
-* [ ] Model evaluation
+* [x] FastAPI service
+* [x] TensorFlow model
+* [x] Model inference pipeline
+* [x] Input preprocessing
+* [x] Output validation
+* [x] Error handling
+* [x] Model evaluation
+* [] Improve AI model 
 
 📄 [AI Architecture](docs/ai/architecture.md)
 📄 [AI Model Documentation](docs/ai/model.md)
