@@ -38,84 +38,291 @@
                 <div class="menu-inner-shadow"></div>
 
                 <ul class="menu-inner py-1">
+
+                    <!-- =====================================================
+                        MAIN
+                    ====================================================== -->
+
+                
+
                     <!-- Dashboard -->
-                    <!-- Matches CSS: .menu-item.active -->
-                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active"
+                    <li
+                        (click)="toggleMenu()"
+                        class="menu-item"
+                        routerLinkActive="active"
                         [routerLinkActiveOptions]="{ exact: true }">
-                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/Dashboard">
+
+                        <a
+                            href="javascript:void(0)"
+                            class="menu-link"
+                            routerLink="/FarmerProfile/Dashboard">
+
                             <i class="menu-icon fa-solid fa-chart-line"></i>
+
                             <div>Dashboard</div>
+
                         </a>
                     </li>
 
-                    <!-- Profile Details -->
-                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active">
-                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/ProfileDetails">
+
+                    <!-- =====================================================
+                        MY FARM
+                    ====================================================== -->
+
+
+
+                    <!-- Profile -->
+                    <li
+                        (click)="toggleMenu()"
+                        class="menu-item"
+                        routerLinkActive="active">
+
+                        <a
+                            href="javascript:void(0)"
+                            class="menu-link"
+                            routerLink="/FarmerProfile/ProfileDetails">
+
                             <i class="menu-icon fa-solid fa-user"></i>
-                            <div>Profile Details</div>
+
+                            <div>Profile</div>
+
                         </a>
                     </li>
 
-                     <!-- Corps -->
-                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active">
-                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/Corps">
+
+                    <!-- Crops -->
+                    <li
+                        (click)="toggleMenu()"
+                        class="menu-item"
+                        routerLinkActive="active">
+
+                        <a
+                            href="javascript:void(0)"
+                            class="menu-link"
+                            routerLink="/FarmerProfile/Corps">
+
                             <i class="menu-icon fa-solid fa-seedling"></i>
-                            <div>Corps</div>
+
+                            <div>My Crops</div>
+
                         </a>
                     </li>
 
-                    <!-- Detection Hitory -->
-                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active">
-                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/DetectionHistory">
-                            <i class="menu-icon fa-solid fa-history"></i>
-                            <div>Detection history</div>
+
+
+                    <!-- =====================================================
+                        PLANT HEALTH
+                    ====================================================== -->
+
+
+
+                    <!-- Detect Disease -->
+                    <li
+                        (click)="toggleMenu()"
+                        class="menu-item"
+                        routerLinkActive="active">
+
+                        <a
+                            href="javascript:void(0)"
+                            class="menu-link"
+                            routerLink="/detect-disease">
+
+                            <i class="menu-icon fa-solid fa-microscope"></i>
+
+                            <div>Detect Disease</div>
+
                         </a>
                     </li>
+
+
+                    <!-- Detection History -->
+                    <li
+                        (click)="toggleMenu()"
+                        class="menu-item"
+                        routerLinkActive="active">
+
+                        <a
+                            href="javascript:void(0)"
+                            class="menu-link"
+                            routerLink="/FarmerProfile/DetectionHistory">
+
+                            <i class="menu-icon fa-solid fa-clock-rotate-left"></i>
+
+                            <div>Detection History</div>
+
+                        </a>
+                    </li>
+
+
+                    <!-- Disease Alerts -->
+                    <li
+                        (click)="toggleMenu()"
+                        class="menu-item"
+                        routerLinkActive="active">
+
+                        <a
+                            href="javascript:void(0)"
+                            class="menu-link"
+                            routerLink="/FarmerProfile/DiseaseAlerts">
+
+                            <i class="menu-icon fa-solid fa-triangle-exclamation"></i>
+
+                            <div>Disease Alerts</div>
+
+                        </a>
+                    </li>
+
+
+
+                    <!-- =====================================================
+                        MARKETPLACE
+                    ====================================================== -->
+
+
+
 
                     <!-- Products -->
-                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active">
-                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/Products">
-                            <i class="menu-icon fa-solid fa-product-hunt"></i>
-                            <div>Products</div>
+                    <li
+                        (click)="toggleMenu()"
+                        class="menu-item"
+                        routerLinkActive="active">
+
+                        <a
+                            href="javascript:void(0)"
+                            class="menu-link"
+                            routerLink="/FarmerProfile/Products">
+
+                            <i class="menu-icon fa-solid fa-store"></i>
+
+                            <div>My Products</div>
+
                         </a>
                     </li>
+
 
                     <!-- Orders -->
-                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active">
-                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/Orders">
-                            <i class="menu-icon fa-solid fa-shopping-cart"></i>
+                    <li
+                        (click)="toggleMenu()"
+                        class="menu-item"
+                        routerLinkActive="active">
+
+                        <a
+                            href="javascript:void(0)"
+                            class="menu-link"
+                            routerLink="/FarmerProfile/Orders">
+
+                            <i class="menu-icon fa-solid fa-cart-shopping"></i>
+
                             <div>Orders</div>
+
                         </a>
                     </li>
+
 
                     <!-- Reviews -->
-                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active">
-                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/Reviews">
-                            <i class="menu-icon fa-solid fa-eye"></i>
+                    <li
+                        (click)="toggleMenu()"
+                        class="menu-item"
+                        routerLinkActive="active">
+
+                        <a
+                            href="javascript:void(0)"
+                            class="menu-link"
+                            routerLink="/FarmerProfile/Reviews">
+
+                            <i class="menu-icon fa-solid fa-star"></i>
+
                             <div>Reviews</div>
+
                         </a>
                     </li>
+
+
+
+                    <!-- =====================================================
+                        COMMUNICATION
+                    ====================================================== -->
+
+
+                    <!-- Notifications -->
+                    <li
+                        (click)="toggleMenu()"
+                        class="menu-item"
+                        routerLinkActive="active">
+
+                        <a
+                            href="javascript:void(0)"
+                            class="menu-link"
+                            routerLink="/FarmerProfile/Notifications">
+
+                            <i class="menu-icon fa-solid fa-bell"></i>
+
+                            <div>Notifications</div>
+
+                        </a>
+                    </li>
+
+
+                    <!-- Messages -->
+                    <li
+                        (click)="toggleMenu()"
+                        class="menu-item"
+                        routerLinkActive="active">
+
+                        <a
+                            href="javascript:void(0)"
+                            class="menu-link"
+                            routerLink="/FarmerProfile/Messages">
+
+                            <i class="menu-icon fa-solid fa-comments"></i>
+
+                            <div>Messages</div>
+
+                        </a>
+                    </li>
+
+
+
+                    <!-- =====================================================
+                        ACCOUNT
+                    ====================================================== -->
+
 
                     <!-- Settings -->
-                    <li (click)="toggleMenu()" class="menu-item" routerLinkActive="active">
-                        <a href="javascript:void(0)" class="menu-link" routerLink="/FarmerProfile/settings">
-                            <i class="menu-icon fa-solid fa-cog"></i>
+                    <li
+                        (click)="toggleMenu()"
+                        class="menu-item"
+                        routerLinkActive="active">
+
+                        <a
+                            href="javascript:void(0)"
+                            class="menu-link"
+                            routerLink="/FarmerProfile/Settings">
+
+                            <i class="menu-icon fa-solid fa-gear"></i>
+
                             <div>Settings</div>
+
                         </a>
                     </li>
 
-                    <!-- Account Header -->
-                    <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">Account</span>
-                    </li>
 
                     <!-- Logout -->
-                    <li (click)="logOut()" class="menu-item">
-                        <a class="menu-link" style="cursor: pointer;">
+                    <li
+                        (click)="logOut()"
+                        class="menu-item">
+
+                        <a
+                            class="menu-link"
+                            style="cursor: pointer;">
+
                             <i class="menu-icon fa-solid fa-right-from-bracket"></i>
+
                             <div>Log Out</div>
+
                         </a>
                     </li>
+
                 </ul>
             </aside>
 

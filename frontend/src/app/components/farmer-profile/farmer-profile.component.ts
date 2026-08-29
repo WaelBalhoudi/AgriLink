@@ -75,7 +75,7 @@ export class FarmerProfileComponent {
    
     this.authServer.logout({email:this.userData.email})
     .subscribe({
-      next:res=>{
+      next:()=>{
         localStorage.clear();
         this.router.navigate(['/Home']);
       },

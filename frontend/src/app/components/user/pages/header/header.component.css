@@ -171,3 +171,13 @@
 .form-control[readonly]:hover {
   background-color: #e9ecef;
 }
+
+
+.notification {
+  list-style: none;
+}
+
+
+li.nav-item.dropdown.notification::marker {
+  content: none;
+}

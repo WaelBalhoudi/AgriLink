@@ -354,6 +354,7 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
           localStorage.setItem('token', response.token);
         }
         Swal.fire('Success!', 'You are now logged in.', 'success');
+        this.router.navigateByUrl("/FarmerProfile/Dashboard")
         this.verifyToken();
 
       },
